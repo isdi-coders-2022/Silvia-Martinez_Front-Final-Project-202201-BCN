@@ -1,12 +1,16 @@
 import Head from "next/head";
 
-export const Layout = () => {
+interface Props {
+  children: JSX.Element;
+}
+
+export const Layout = ({ children }: Props) => {
   return (
     <>
       <Head>
         <title>Wallaplop</title>
-        <meta property="og:title" content="Wallaplop" key="title" />
       </Head>
+      {children}
     </>
   );
 };
