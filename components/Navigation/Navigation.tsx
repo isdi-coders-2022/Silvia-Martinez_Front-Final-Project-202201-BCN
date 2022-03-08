@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import Image from "next/image";
 import logo from "/../../public/wallaplop.jpg";
 
-const NavList = styled.div`
+const NavList: StyledComponent<"div", {}> = styled.div`
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -13,28 +13,28 @@ const NavList = styled.div`
   height: 100px;
   width: 100%;
 `;
-const Logo = styled.div`
+const Logo: StyledComponent<"div", {}> = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 30px;
 `;
 
-const List = styled.ul`
+const List: StyledComponent<"ul", {}> = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
 `;
 
-const ListItem = styled.li`
+const ListItem: StyledComponent<"li", {}> = styled.li`
   display: flex;
   flex-direction: column;
   padding: 10px;
   margin: 20px;
 `;
 
-export const Navigation = () => {
+export const Navigation = (): JSX.Element => {
   return (
     <NavList>
       {/* <Logo>
