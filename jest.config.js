@@ -8,12 +8,14 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   collectCoverageFrom: [
     "**/*.tsx",
+    "**/*.ts",
     "!**/*.test.tsx",
     "!.next/**/*",
     "!coverage/**/*",
     "!jest.config.js",
     "!next.config.js",
     "!**/_app.tsx",
+    "!_document.js",
   ],
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
