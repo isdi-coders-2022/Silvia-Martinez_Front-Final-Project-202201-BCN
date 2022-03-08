@@ -37,9 +37,9 @@ const ListItem: StyledComponent<"li", {}> = styled.li`
 export const Navigation = (): JSX.Element => {
   return (
     <NavList>
-      {/* <Logo>
+      <Logo>
         <Image src={logo} alt={"logo"} width={50} height={50} />
-      </Logo> */}
+      </Logo>
       <List>
         <ListItem>
           <FontAwesomeIcon icon={faHouse} />
