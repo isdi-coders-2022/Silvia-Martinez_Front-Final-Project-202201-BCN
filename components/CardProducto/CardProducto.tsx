@@ -51,12 +51,7 @@ const CardProducto = (): JSX.Element => {
   return (
     <>
       <Card>
-        <CardImage>
-          <Image
-            src="https://es.wikipedia.org/wiki/Nao_(robot)#/media/Archivo:Nao_Robot_(Robocup_2016).jpg"
-            alt="robot"
-          />
-        </CardImage>
+        <CardImage></CardImage>
         <CardDescription>
           <h2>Precio</h2>
           <p>Descripcion producto</p>
