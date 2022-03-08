@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import Image from "next/image";
-import logo from "../../public/wallaplop.jpg";
+import logo from "/../../public/wallaplop.jpg";
 
 const NavList = styled.div`
   display: flex;
@@ -37,9 +37,9 @@ const ListItem = styled.li`
 export const Navigation = () => {
   return (
     <NavList>
-      <Logo>
+      {/* <Logo>
         <Image src={logo} alt={"logo"} width={50} height={50} />
-      </Logo>
+      </Logo> */}
       <List>
         <ListItem>
           <FontAwesomeIcon icon={faHouse} />
