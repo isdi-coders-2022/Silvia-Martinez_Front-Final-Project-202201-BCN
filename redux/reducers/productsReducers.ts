@@ -6,7 +6,7 @@ const productsReducers = (
   currentProducts: Producto[] = [],
   action: AnyAction = { type: "" }
 ) => {
-  let newProducts;
+  let newProducts: Producto[];
   switch (action.type) {
     case actionTypes.loadProducts:
       newProducts = [...action.products];
