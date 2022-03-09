@@ -4,7 +4,11 @@ import CardProducto from "../CardProducto/CardProducto";
 
 const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+  top: 100px;
+  flex-wrap: wrap;
 `;
 
 interface ProductListProps {
