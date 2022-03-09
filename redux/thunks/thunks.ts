@@ -1,11 +1,15 @@
+import { Producto } from "../../types/Producto";
 import { loadProductsActions } from "../actions/actionCreator";
 import { AppDispatch } from "../store";
 
+interface ProductsResponse {
+  products: Producto[];
+}
 export const loadProductsThunks = async (dispatch: AppDispatch) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_WALLAPLOP}products/list`
   );
-  const products = await response.json();
+  const jsonRespone: ProductsResponse = await response.json();
 
-  dispatch(loadProductsActions(products));
+  dispatch(loadProductsActions(jsonRespone.products));
 };
