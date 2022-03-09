@@ -2,7 +2,7 @@ import { Producto } from "../../types/Producto";
 import actionTypes from "../actions/actionTypes";
 import productsReducers from "./productsReducers";
 
-describe("Given robotsReducers", () => {
+describe("Given productReducers", () => {
   describe("When given a current obejct and action", () => {
     test("Then should return a  with current objects and actions", () => {
       const products = [1, 2, 3];
@@ -17,7 +17,7 @@ describe("Given robotsReducers", () => {
       expect(newProdcuts).toStrictEqual(products);
     });
   });
-  describe("When given a currentRobots and a action that is not in actionCreators", () => {
+  describe("When given a currentProduct and a action that is not in actionCreators", () => {
     test("Then should return the current list because its using default statement", () => {
       const currentProducts = [
         {
