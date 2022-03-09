@@ -1,4 +1,5 @@
 import styled, { StyledComponent } from "styled-components";
+import { Producto } from "../../types/Producto";
 
 const Card: StyledComponent<"article", {}> = styled.article`
   display: flex;
@@ -32,7 +33,7 @@ const CardImage: StyledComponent<"section", {}> = styled.section`
   }
 `;
 
-const CardDescription: StyledComponent<"section", {}> = styled.section`
+const CardDescription: StyledComponent<"li", {}> = styled.li`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -65,16 +66,20 @@ const CardDescription: StyledComponent<"section", {}> = styled.section`
   }
 `;
 
-const CardProducto = (): JSX.Element => {
+interface CardProductoProps {
+  product: Producto;
+}
+
+const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
   return (
     <>
       <Card>
         <CardImage></CardImage>
         <CardDescription>
-          <h2>Precio</h2>
-          <h3>titulo</h3>
-          <p>Descripcion producto</p>
-          <p> Categoria</p>
+          <h2>{product.price} €</h2>
+          <h3>{product.title}</h3>
+          <p>{product.description}</p>
+          <p> {product.category}</p>
         </CardDescription>
       </Card>
     </>
