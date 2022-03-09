@@ -34,4 +34,13 @@ describe("Given productReducers", () => {
       expect(receivedProducts).toEqual(currentProducts);
     });
   });
+  describe("When given empty state and action", () => {
+    test("Then should return an empty list of products", () => {
+      const currentProducts: Producto[] = [];
+
+      const receivedProducts = productsReducers();
+
+      expect(receivedProducts).toEqual(currentProducts);
+    });
+  });
 });
