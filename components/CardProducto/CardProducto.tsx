@@ -9,7 +9,7 @@ const Card: StyledComponent<"article", {}> = styled.article`
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
-  margin: 20px;
+  margin: 5px;
   :hover {
     border: 1px solid #fd9cca;
   }
@@ -37,7 +37,6 @@ const CardDescription: StyledComponent<"li", {}> = styled.li`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 10px;
 
   h2 {
     font-size: 16px;
