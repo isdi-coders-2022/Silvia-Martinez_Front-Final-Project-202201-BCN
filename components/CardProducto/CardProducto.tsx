@@ -22,7 +22,8 @@ const CardImage: StyledComponent<"section", {}> = styled.section`
   display: flex;
   background-color: #9c9999;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   width: 215px;
   height: 216px;
   border-radius: 13px 13px 0px 0px;
@@ -37,6 +38,8 @@ const CardDescription: StyledComponent<"li", {}> = styled.li`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin: 5px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 
   h2 {
     font-size: 16px;
