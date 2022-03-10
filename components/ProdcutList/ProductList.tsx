@@ -9,6 +9,8 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   position: relative;
   top: 100px;
   flex-wrap: wrap;
+  margin: 0px;
+  padding: 0px;
 `;
 
 interface ProductListProps {
