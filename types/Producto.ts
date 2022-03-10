@@ -3,4 +3,5 @@ export interface Producto {
   title: string;
   description: string;
   category: string;
+  picture: string;
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 
@@ -18,15 +19,15 @@ const Card: StyledComponent<"article", {}> = styled.article`
     width: 176px;
   }
 `;
-const CardImage: StyledComponent<"section", {}> = styled.section`
+const CardImage = styled(Image)`
   display: flex;
-  background-color: #9c9999;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 215px;
   height: 216px;
   border-radius: 13px 13px 0px 0px;
+  z-index: 99;
 
   @media (max-width: 400px) {
     width: 174px;
@@ -76,7 +77,12 @@ const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
   return (
     <>
       <Card>
-        <CardImage></CardImage>
+        <CardImage
+          src={product.picture}
+          alt={product.title}
+          width={215}
+          height={216}
+        ></CardImage>
         <CardDescription>
           <h2>{product.price} €</h2>
           <h3>{product.title}</h3>

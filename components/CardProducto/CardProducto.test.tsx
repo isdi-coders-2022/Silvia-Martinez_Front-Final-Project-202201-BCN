@@ -10,6 +10,7 @@ describe("Given a CardProducto Component", () => {
         title: "silla",
         description: "silla bonita",
         category: "mueble",
+        picture: "image.jpg",
       };
 
       render(<CardProducto product={product} />);
