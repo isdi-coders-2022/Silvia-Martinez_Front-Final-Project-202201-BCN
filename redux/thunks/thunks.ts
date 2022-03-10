@@ -1,3 +1,4 @@
+import { Dispatch } from "redux";
 import { Producto } from "../../types/Producto";
 import { loadProductsActions } from "../actions/actionCreator";
 import { AppDispatch } from "../store";
