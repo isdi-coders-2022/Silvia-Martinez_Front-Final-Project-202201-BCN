@@ -35,4 +35,8 @@ export const handlers = [
       );
     }
   ),
+  rest.delete(
+    `${process.env.NEXT_PUBLIC_WALLAPLOP}products/33`,
+    (req, res, ctx) => res(ctx.status(200), ctx.json({}))
+  ),
 ];

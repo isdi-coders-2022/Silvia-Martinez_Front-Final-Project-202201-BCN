@@ -95,4 +95,46 @@ describe("Given productReducers", () => {
       expect(receivedProducts).toEqual(currentProducts);
     });
   });
+  describe("When given a delete action", () => {
+    test("Then should return the list minus the corresponding with the id", () => {
+      const currentProducts = [
+        {
+          _id: "1234",
+          price: 10,
+          title: "silla",
+          description: "silla bonita",
+          category: "mueble",
+          picture: "unafoto.jpg",
+        },
+        {
+          _id: "1235",
+          price: 10,
+          title: "taburete",
+          description: "taburete feo",
+          category: "mueble",
+          picture: "unafoto.jpg",
+        },
+      ];
+
+      const expectedProducts = [
+        {
+          _id: "1235",
+          price: 10,
+          title: "taburete",
+          description: "taburete feo",
+          category: "mueble",
+          picture: "unafoto.jpg",
+        },
+      ];
+
+      const action = {
+        type: actionTypes.deleteProduct,
+        id: "1234",
+      };
+
+      const newProducts = productsReducers(currentProducts, action);
+
+      expect(newProducts).toEqual(expectedProducts);
+    });
+  });
 });
