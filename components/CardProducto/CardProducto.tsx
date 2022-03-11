@@ -14,7 +14,7 @@ const Card: StyledComponent<"article", {}> = styled.article`
   :hover {
     border: 1px solid #fd9cca;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     height: 253px;
     width: 176px;
   }
@@ -29,7 +29,7 @@ const CardImage = styled(Image)`
   border-radius: 13px 13px 0px 0px;
   z-index: 99;
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     width: 174px;
     height: 170px;
   }
@@ -54,7 +54,7 @@ const CardDescription: StyledComponent<"li", {}> = styled.li`
     font-size: 12px;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     height: 83px;
     h2 {
       font-size: 16px;
