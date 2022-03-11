@@ -22,7 +22,7 @@ const ProductList = ({ products }: ProductListProps): JSX.Element => {
     <>
       <ListProduct>
         {products.map((producto: Producto) => (
-          <CardProducto key={producto.title} product={producto} />
+          <CardProducto key={producto._id} product={producto} />
         ))}
       </ListProduct>
     </>
