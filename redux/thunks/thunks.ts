@@ -1,5 +1,6 @@
 import { Producto } from "../../types/Producto";
 import {
+  deleteProductActions,
   loadProductsActions,
   loadProductsUserActions,
 } from "../actions/actionCreator";
@@ -25,3 +26,14 @@ export const loadProductsUserThunks = async (dispatch: AppDispatch) => {
 
   dispatch(loadProductsUserActions(jsonRespone.products));
 };
+
+export const deleteProductThunks =
+  (id: string) => async (dispatch: AppDispatch) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${id}`,
+      { method: "DELETE" }
+    );
+    if (response.ok) {
+      dispatch(deleteProductActions(id));
+    }
+  };
