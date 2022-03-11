@@ -12,6 +12,10 @@ const productsReducers = (
       newProducts = [...action.products];
       break;
 
+    case actionTypes.loadUserProducts:
+      newProducts = [...action.products];
+      break;
+
     default:
       newProducts = [...currentProducts];
       break;
