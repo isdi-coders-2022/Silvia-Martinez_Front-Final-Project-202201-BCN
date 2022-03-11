@@ -10,3 +10,8 @@ export const loadProductsUserActions = (products: Producto[]) => ({
   type: actionTypes.loadUserProducts,
   products,
 });
+
+export const deleteProductActions = (id: string) => ({
+  type: actionTypes.deleteProduct,
+  id,
+});
