@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Action } from "redux";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
@@ -109,9 +110,13 @@ const CardButton = styled.div`
 
 interface CardProductoProps {
   product: Producto;
+  onClick: () => void;
 }
 
-const CardProductoUser = ({ product }: CardProductoProps): JSX.Element => {
+const CardProductoUser = ({
+  product,
+  onClick,
+}: CardProductoProps): JSX.Element => {
   return (
     <>
       <Card>
@@ -129,8 +134,8 @@ const CardProductoUser = ({ product }: CardProductoProps): JSX.Element => {
           <p>numero likes</p>
         </CardDescription>
         <CardButton>
-          <Button text={"Editar"} actionOnClick={() => {}} />
-          <Button text={"Borrar"} actionOnClick={() => {}} />
+          <Button text={"Editar"} onClick={() => {}} />
+          <Button text={"Borrar"} onClick={onClick} />
         </CardButton>
         <Map></Map>
       </Card>

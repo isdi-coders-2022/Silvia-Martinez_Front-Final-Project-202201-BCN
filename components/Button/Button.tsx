@@ -16,13 +16,13 @@ const ButtonStyled = styled.button`
 `;
 
 interface ButtonProps {
-  actionOnClick: () => void;
+  onClick: () => void;
   text: string;
 }
 
-const Button = ({ actionOnClick, text }: ButtonProps): JSX.Element => {
+const Button = ({ onClick, text }: ButtonProps): JSX.Element => {
   return (
-    <ButtonStyled type="button" onClick={actionOnClick}>
+    <ButtonStyled type="button" onClick={onClick}>
       {text}
     </ButtonStyled>
   );
