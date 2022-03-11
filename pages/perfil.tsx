@@ -27,10 +27,6 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   padding: 0px;
 `;
 
-interface ProductListProps {
-  products: Producto[];
-}
-
 const Perfil = (): JSX.Element => {
   const products = useSelector((state: RootState) => state.products);
 
