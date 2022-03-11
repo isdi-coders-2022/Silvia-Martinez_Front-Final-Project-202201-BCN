@@ -15,7 +15,7 @@ describe("Given a CardProducto Component", () => {
         picture: "unafoto.jpg",
       };
 
-      render(<CardProductoUser product={product} />);
+      render(<CardProductoUser product={product} onClick={() => {}} />);
 
       const text = screen.getByRole("heading", { name: "14 €" });
 
