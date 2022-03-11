@@ -6,10 +6,12 @@ describe("Given a loadProductsActions", () => {
     test("Then it should return an action with product inside", () => {
       const products: Producto[] = [
         {
+          _id: "124",
           price: 10,
           title: "silla",
           description: "silla bonita",
           category: "mueble",
+          picture: "unafoto.jpg",
         },
       ];
 

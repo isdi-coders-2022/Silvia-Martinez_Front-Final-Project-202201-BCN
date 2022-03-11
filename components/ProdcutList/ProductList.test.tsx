@@ -8,10 +8,12 @@ describe("Given a ProdcutList Component", () => {
     test("Then it should render", () => {
       const productos: Producto[] = [
         {
+          _id: "234",
           price: 10,
           title: "silla",
           description: "silla bonita",
           category: "mueble",
+          picture: "unafoto.jpg",
         },
       ];
 
