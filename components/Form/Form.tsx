@@ -1,4 +1,13 @@
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  SyntheticEvent,
+  useState,
+} from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { createProductThunk } from "../../redux/thunks/thunks";
+import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
 
 const StyledForm = styled.form`
@@ -47,17 +56,49 @@ const StyledInput = styled.input`
 `;
 
 const Form = () => {
+  const dispatch = useDispatch();
+
+  const initialFields: Producto = {
+    _id: "",
+    title: "",
+    description: "",
+    price: 0,
+    category: "",
+    picture: "",
+  };
+
+  const [formData, setFormData] = useState(initialFields);
+
+  const onFormSubmit = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    dispatch(createProductThunk(formData));
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setFormData(initialFields);
+  };
+
+  const changeData = (event: ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.value,
+    });
+  };
+
   return (
     <>
       <StyledForm>
-        <StyleLineForm>
+        <StyleLineForm onSubmit={onFormSubmit}>
           <FormBlock className="form-block">
             <label htmlFor="title">Producto:</label>
             <StyledInput
               autoComplete="off"
               type="text"
-              id="titel"
+              id="title"
               placeholder="Nombre del Producto"
+              onChange={changeData}
+              value={formData.title}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -67,6 +108,8 @@ const Form = () => {
               type="text"
               id="description"
               placeholder="Descripcion del producto"
+              onChange={changeData}
+              value={formData.description}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -77,15 +120,19 @@ const Form = () => {
               id="price"
               min="0"
               placeholder="Precio"
+              onChange={changeData}
+              value={formData.price}
             />
           </FormBlock>
           <FormBlock className="form-block">
-            <label htmlFor="categorie">Categoria:</label>
+            <label htmlFor="category">Categoria:</label>
             <StyledInput
               autoComplete="off"
               type="text"
-              id="categorie"
+              id="category"
               placeholder="Categoria"
+              onChange={changeData}
+              value={formData.category}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -95,11 +142,13 @@ const Form = () => {
               type="text"
               id="picture"
               placeholder="Imagen"
+              onChange={changeData}
+              value={formData.picture}
             />
           </FormBlock>
         </StyleLineForm>
         <StyleButtons>
-          <Button text="Añadir" onClick={() => {}}></Button>
+          <Button type="submit" text="Añadir"></Button>
         </StyleButtons>
       </StyledForm>
     </>

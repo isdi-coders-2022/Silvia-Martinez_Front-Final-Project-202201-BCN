@@ -25,7 +25,7 @@ describe("Given a Button Component", () => {
 
       render(<Button text={text} onClick={action} />);
 
-      const button: HTMLElement = screen.queryByRole("button");
+      const button: HTMLElement = screen.getByRole("button");
       userEvent.click(button);
 
       expect(action).toHaveBeenCalled();
