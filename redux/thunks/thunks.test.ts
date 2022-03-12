@@ -3,6 +3,7 @@ import {
   loadProductsThunks,
   loadProductsUserThunks,
 } from "./thunks";
+import "@testing-library/jest-dom";
 
 describe("Given a load thunk function", () => {
   describe("When it's invoked", () => {
