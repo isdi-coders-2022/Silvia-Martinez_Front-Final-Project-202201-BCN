@@ -11,5 +11,19 @@ describe("Given a perfil page", () => {
 
       expect(text).toBeInTheDocument();
     });
+    test("Then it's render a button", () => {
+      renderWithProviders(<Perfil />);
+
+      const button = screen.getByRole("button", { name: "Añadir producto" });
+
+      expect(button).toBeInTheDocument();
+    });
+    test("Then it render a list of products", () => {
+      renderWithProviders(<Perfil />);
+
+      const text = screen.getByRole("list");
+
+      expect(text).toBeInTheDocument();
+    });
   });
 });
