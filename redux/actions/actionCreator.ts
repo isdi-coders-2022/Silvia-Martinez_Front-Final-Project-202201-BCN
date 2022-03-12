@@ -15,3 +15,8 @@ export const deleteProductActions = (id: string) => ({
   type: actionTypes.deleteProduct,
   id,
 });
+
+export const createProductActions = (product: Producto) => ({
+  type: actionTypes.createProduct,
+  product,
+});
