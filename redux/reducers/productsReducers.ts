@@ -22,6 +22,9 @@ const productsReducers = (
       );
       break;
 
+    case actionTypes.createProduct:
+      newProducts = [...currentProducts, action.product];
+
     default:
       newProducts = [...currentProducts];
       break;
