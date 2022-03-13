@@ -148,14 +148,6 @@ describe("Given productReducers", () => {
           category: "mueble",
           picture: "unafoto.jpg",
         },
-        {
-          _id: "1235",
-          price: 10,
-          title: "taburete",
-          description: "taburete feo",
-          category: "mueble",
-          picture: "unafoto.jpg",
-        },
       ];
       const product: Producto[] = [
         {
@@ -175,7 +167,7 @@ describe("Given productReducers", () => {
 
       const newProducts = productsReducers(currentProducts, action);
 
-      expect(newProducts).toEqual(currentProducts);
+      expect(newProducts.length).toEqual(2);
     });
   });
 });
