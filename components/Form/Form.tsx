@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { createProductThunk } from "../../redux/thunks/thunks";
