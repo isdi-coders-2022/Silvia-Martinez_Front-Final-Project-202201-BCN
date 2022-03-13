@@ -3,6 +3,7 @@ const actionTypes = {
   loadUserProducts: "load-user-products",
   deleteProduct: "delete-product",
   createProduct: "create-product",
+  updateProduct: "update-product",
 };
 
 export default actionTypes;
