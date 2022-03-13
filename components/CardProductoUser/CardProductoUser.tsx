@@ -109,12 +109,14 @@ const CardButton = styled.div`
 
 interface CardProductoProps {
   product: Producto;
-  onClick: () => void;
+  onClickDelete: () => void;
+  onClickUpdate: () => void;
 }
 
 const CardProductoUser = ({
   product,
-  onClick,
+  onClickDelete,
+  onClickUpdate,
 }: CardProductoProps): JSX.Element => {
   return (
     <>
@@ -133,8 +135,8 @@ const CardProductoUser = ({
           <p>numero likes</p>
         </CardDescription>
         <CardButton>
-          <Button text={"Editar"} onClick={() => {}} />
-          <Button text={"Borrar"} onClick={onClick} />
+          <Button text={"Editar"} onClick={onClickUpdate} />
+          <Button text={"Borrar"} onClick={onClickDelete} />
         </CardButton>
         <Map></Map>
       </Card>
