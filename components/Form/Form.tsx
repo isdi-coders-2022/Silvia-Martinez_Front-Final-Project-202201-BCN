@@ -1,9 +1,4 @@
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  SyntheticEvent,
-  useState,
-} from "react";
+import { ChangeEvent, FormEventHandler, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { createProductThunk } from "../../redux/thunks/thunks";
@@ -69,7 +64,7 @@ const Form = () => {
 
   const [formData, setFormData] = useState(initialFields);
 
-  const onFormSubmit = (event: ChangeEvent<HTMLInputElement>) => {
+  const onFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(createProductThunk(formData));
     resetForm();
@@ -88,8 +83,8 @@ const Form = () => {
 
   return (
     <>
-      <StyledForm>
-        <StyleLineForm onSubmit={onFormSubmit}>
+      <StyledForm onSubmit={onFormSubmit} name="form-name">
+        <StyleLineForm>
           <FormBlock className="form-block">
             <label htmlFor="title">Producto:</label>
             <StyledInput
