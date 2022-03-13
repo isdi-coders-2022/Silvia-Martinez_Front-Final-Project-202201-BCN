@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Action } from "redux";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
