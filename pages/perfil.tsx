@@ -67,7 +67,8 @@ const Perfil = (): JSX.Element => {
           <CardProductoUser
             key={producto._id}
             product={producto}
-            onClick={() => deleteProduct(producto._id)}
+            onClickDelete={() => deleteProduct(producto._id)}
+            onClickUpdate={() => router.push(`/edit/${producto._id}`)}
           />
         ))}{" "}
       </ListProduct>
