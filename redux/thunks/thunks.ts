@@ -4,6 +4,7 @@ import {
   deleteProductActions,
   loadProductsActions,
   loadProductsUserActions,
+  updateProductActions,
 } from "../actions/actionCreator";
 import { AppDispatch } from "../store";
 
@@ -60,5 +61,29 @@ export const createProductThunk =
     const newProduct = await response.json();
     if (response.ok) {
       dispatch(createProductActions(newProduct));
+    }
+  };
+
+export const updateProductThunk =
+  ({ price, title, description, picture, category, _id }: Producto) =>
+  async (dispatch: AppDispatch) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${_id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          price,
+          title,
+          description,
+          picture,
+          category,
+          location: { lat: 41.38879, long: 2.15899 },
+        }),
+      }
+    );
+    const updateProduct = await response.json();
+    if (response.ok) {
+      dispatch(updateProductActions(updateProduct));
     }
   };

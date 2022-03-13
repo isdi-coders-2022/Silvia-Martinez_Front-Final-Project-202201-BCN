@@ -1,7 +1,11 @@
 import { ChangeEvent, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { createProductThunk } from "../../redux/thunks/thunks";
+import { RootState } from "../../redux/store";
+import {
+  createProductThunk,
+  updateProductThunk,
+} from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
 
@@ -50,23 +54,35 @@ const StyledInput = styled.input`
   }
 `;
 
-const Form = () => {
-  const dispatch = useDispatch();
+interface FormProps {
+  product?: Producto;
+}
 
-  const initialFields: Producto = {
-    _id: "",
-    title: "",
-    description: "",
-    price: 0,
-    category: "",
-    picture: "",
-  };
+const Form = ({ product }: FormProps): JSX.Element => {
+  let isEditing: Boolean = !!product;
+  let initialFields: Producto = product
+    ? product
+    : {
+        _id: "",
+        title: "",
+        description: "",
+        price: 0,
+        category: "",
+        picture: "",
+      };
+
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState(initialFields);
 
   const onFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(createProductThunk(formData));
+    if (isEditing) {
+      dispatch(updateProductThunk(formData));
+    } else {
+      dispatch(createProductThunk(formData));
+    }
+
     resetForm();
   };
 
@@ -143,7 +159,10 @@ const Form = () => {
           </FormBlock>
         </StyleLineForm>
         <StyleButtons>
-          <Button type="submit" text="Añadir"></Button>
+          <Button
+            type="submit"
+            text={isEditing ? "Modificar" : "Añadir"}
+          ></Button>
         </StyleButtons>
       </StyledForm>
     </>
