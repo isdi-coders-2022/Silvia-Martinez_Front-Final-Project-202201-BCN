@@ -12,8 +12,7 @@ const NavList: StyledComponent<"div", {}> = styled.div`
   top: 0;
   background-color: rgba(196, 196, 196, 0.16);
   height: 100px;
-  width: 100%;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  width: 100vw;
 `;
 const Logo: StyledComponent<"div", {}> = styled.div`
   display: flex;
@@ -27,6 +26,8 @@ const List: StyledComponent<"ul", {}> = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  margin: 0px;
+  padding: 0px;
 `;
 
 const ListItem: StyledComponent<"li", {}> = styled.li`
@@ -35,7 +36,6 @@ const ListItem: StyledComponent<"li", {}> = styled.li`
   a {
     display: flex;
     flex-direction: column;
-
     text-decoration: none;
     color: black;
   }
