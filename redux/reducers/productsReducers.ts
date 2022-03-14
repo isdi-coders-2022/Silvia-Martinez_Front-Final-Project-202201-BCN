@@ -11,10 +11,12 @@ const productsReducers = (
   let newProducts: Producto[];
   switch (action.type) {
     case HYDRATE:
-      console.log(action);
-      newProducts = [];
+      newProducts = [...action.payload.products];
       break;
+
     case actionTypes.loadProducts:
+      console.log("here again");
+
       newProducts = [...action.products];
       break;
 
@@ -31,9 +33,11 @@ const productsReducers = (
     case actionTypes.createProduct:
       newProducts = [...currentProducts, action.product];
       break;
+
     case actionTypes.updateProduct:
       newProducts = [...currentProducts, action.product];
       break;
+
     default:
       newProducts = [...currentProducts];
       break;

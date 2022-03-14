@@ -13,7 +13,7 @@ const makeStore = (context: Context) =>
   createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export const wrapper = createWrapper<Store<State>>(makeStore, {
-  debug: true,
+  debug: false,
 });
 
 export type AppDispatch = Store["dispatch"];
