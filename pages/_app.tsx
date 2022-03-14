@@ -2,7 +2,6 @@ import type { AppProps } from "next/app";
 import { Layout } from "../components/Layout/Layout";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { wrapper } from "../redux/store";
-import { Provider } from "react-redux";
 import React, { FC } from "react";
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {

@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { RootState } from "../../redux/store";
 import {
   createProductThunk,
   updateProductThunk,
@@ -59,7 +58,7 @@ interface FormProps {
 }
 
 const Form = ({ product }: FormProps): JSX.Element => {
-  let isEditing: Boolean = !!product;
+  let isEditing: boolean = !!product;
   let initialFields: Producto = product
     ? product
     : {
