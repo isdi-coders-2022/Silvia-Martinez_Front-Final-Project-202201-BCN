@@ -60,4 +60,25 @@ export const handlers = [
       );
     }
   ),
+  rest.put(
+    `${process.env.NEXT_PUBLIC_WALLAPLOP}products/123`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(201),
+        ctx.json([
+          {
+            _id: "123",
+            price: 10,
+            title: "silla",
+            description: "silla bonita",
+            category: "mueble",
+            location: {
+              lat: 22222,
+              long: 44444,
+            },
+          },
+        ])
+      );
+    }
+  ),
 ];
