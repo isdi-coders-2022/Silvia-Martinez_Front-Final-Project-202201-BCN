@@ -1,7 +1,6 @@
 import { Producto } from "../../types/Producto";
 import { AnyAction } from "redux";
 import actionTypes from "../actions/actionTypes";
-
 import { HYDRATE } from "next-redux-wrapper";
 
 const productsReducers = (
@@ -15,8 +14,6 @@ const productsReducers = (
       break;
 
     case actionTypes.loadProducts:
-      console.log("here again");
-
       newProducts = [...action.products];
       break;
 
