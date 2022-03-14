@@ -170,4 +170,36 @@ describe("Given productReducers", () => {
       expect(newProducts.length).toEqual(2);
     });
   });
+  describe("When given a update action", () => {
+    test("Then should return the list with the updated product", () => {
+      const currentProducts: Producto[] = [
+        {
+          _id: "1234",
+          price: 10,
+          title: "silla",
+          description: "silla bonita",
+          category: "mueble",
+          picture: "unafoto.jpg",
+        },
+      ];
+
+      const product: Producto = {
+        _id: "1234",
+        price: 10,
+        title: "silla",
+        description: "silla fea",
+        category: "mueble",
+        picture: "unafoto.jpg",
+      };
+
+      const action = {
+        type: actionTypes.updateProduct,
+        product,
+      };
+
+      const updatedProducts = productsReducers(currentProducts, action);
+
+      expect(updatedProducts.length).toBe(1);
+    });
+  });
 });
