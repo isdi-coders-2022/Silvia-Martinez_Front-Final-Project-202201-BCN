@@ -1,10 +1,4 @@
-import {
-  GetServerSideProps,
-  GetServerSidePropsContext,
-  NextPageContext,
-} from "next";
-import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import styled from "styled-components";
 import Form from "../../components/Form/Form";
 import { Producto } from "../../types/Producto";
