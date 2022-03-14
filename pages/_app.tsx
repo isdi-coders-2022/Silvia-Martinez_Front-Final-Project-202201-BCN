@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout/Layout";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { wrapper } from "../redux/store";
 import React, { FC } from "react";
+import "../styles/globals.css";
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (

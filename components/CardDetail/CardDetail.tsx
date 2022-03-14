@@ -1,14 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 
 const Card: StyledComponent<"article", {}> = styled.article`
+  position: relative;
+  top: 100px;
   display: flex;
   flex-direction: column;
-  width: 217px;
-  height: 363px;
+  width: 400px;
+  height: 600px;
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
@@ -17,8 +17,8 @@ const Card: StyledComponent<"article", {}> = styled.article`
     border: 1px solid #fd9cca;
   }
   @media (max-width: 500px) {
-    height: 253px;
-    width: 176px;
+    height: 300px;
+    width: 200px;
   }
 `;
 const CardImage = styled(Image)`
@@ -71,12 +71,11 @@ const CardDescription: StyledComponent<"li", {}> = styled.li`
   }
 `;
 
-interface CardProductoProps {
+interface CardDetailProps {
   product: Producto;
 }
 
-const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
-  const router = useRouter();
+const CardDetail = ({ product }: CardDetailProps): JSX.Element => {
   return (
     <>
       <Card>
@@ -86,17 +85,15 @@ const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
           width={215}
           height={216}
         ></CardImage>
-        <Link href={`/detail/${product._id}`} passHref>
-          <CardDescription>
-            <h2>{product.price} €</h2>
-            <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <p> {product.category}</p>
-          </CardDescription>
-        </Link>
+        <CardDescription>
+          <h2>{product.price} €</h2>
+          <h3>{product.title}</h3>
+          <p>{product.description}</p>
+          <p> {product.category}</p>
+        </CardDescription>
       </Card>
     </>
   );
 };
 
-export default CardProducto;
+export default CardDetail;
