@@ -2,12 +2,18 @@ import { Producto } from "../../types/Producto";
 import { AnyAction } from "redux";
 import actionTypes from "../actions/actionTypes";
 
+import { HYDRATE } from "next-redux-wrapper";
+
 const productsReducers = (
   currentProducts: Producto[] = [],
   action: AnyAction = { type: "" }
 ) => {
   let newProducts: Producto[];
   switch (action.type) {
+    case HYDRATE:
+      console.log(action);
+      newProducts = [];
+      break;
     case actionTypes.loadProducts:
       newProducts = [...action.products];
       break;
