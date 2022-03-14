@@ -32,7 +32,15 @@ const productsReducers = (
       break;
 
     case actionTypes.updateProduct:
-      newProducts = [...currentProducts, action.product];
+      newProducts = [
+        ...currentProducts.map((product) => {
+          if (product._id === action.product._id) {
+            return action.product;
+          }
+          return product;
+        }),
+      ];
+
       break;
 
     default:

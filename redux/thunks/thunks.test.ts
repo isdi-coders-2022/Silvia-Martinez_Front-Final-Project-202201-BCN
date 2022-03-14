@@ -3,6 +3,7 @@ import {
   deleteProductThunks,
   loadProductsThunks,
   loadProductsUserThunks,
+  updateProductThunk,
 } from "./thunks";
 import "@testing-library/jest-dom";
 
@@ -62,6 +63,29 @@ describe("Given a createProduct thunk function", () => {
       const createThunk = createProductThunk(product);
 
       await createThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a updateProduct thunk function", () => {
+  describe("When it's invoked", () => {
+    test("Then it should call a dispatch", async () => {
+      const dispatch = jest.fn();
+
+      const product = {
+        _id: "123",
+        price: 10,
+        title: "silla",
+        description: "silla bonita",
+        picture: "unafoto.jpg",
+        category: "mueble",
+      };
+
+      const updateThunk = updateProductThunk(product);
+
+      await updateThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });

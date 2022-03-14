@@ -21,7 +21,7 @@ export const createProductActions = (product: Producto) => ({
   product,
 });
 
-export const updateProductActions = (id: string) => ({
+export const updateProductActions = (product: Producto) => ({
   type: actionTypes.updateProduct,
-  id,
+  product,
 });
