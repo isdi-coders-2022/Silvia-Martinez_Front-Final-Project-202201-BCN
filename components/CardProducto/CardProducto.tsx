@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 
@@ -74,6 +76,7 @@ interface CardProductoProps {
 }
 
 const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
+  const router = useRouter();
   return (
     <>
       <Card>
@@ -83,12 +86,14 @@ const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
           width={215}
           height={216}
         ></CardImage>
-        <CardDescription>
-          <h2>{product.price} €</h2>
-          <h3>{product.title}</h3>
-          <p>{product.description}</p>
-          <p> {product.category}</p>
-        </CardDescription>
+        <Link href={`/detail/${product._id}`} passHref>
+          <CardDescription>
+            <h2>{product.price} €</h2>
+            <h3>{product.title}</h3>
+            <p>{product.description}</p>
+            <p> {product.category}</p>
+          </CardDescription>
+        </Link>
       </Card>
     </>
   );
