@@ -13,7 +13,7 @@ export default Home;
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
-    await store.dispatch(loadProductsThunks);
+    await loadProductsThunks(store.dispatch);
     return {
       props: {},
     };
