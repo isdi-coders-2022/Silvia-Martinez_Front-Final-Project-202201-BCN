@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 
@@ -80,7 +79,6 @@ interface CardProductoProps {
 }
 
 const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
-  const router = useRouter();
   return (
     <>
       <Card>
