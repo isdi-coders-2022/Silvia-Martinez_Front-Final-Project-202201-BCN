@@ -8,7 +8,7 @@ const Card: StyledComponent<"li", {}> = styled.li`
   flex-direction: row;
   justify-content: space-between;
   width: 750px;
-  height: 195px;
+  height: 185px;
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
@@ -20,24 +20,26 @@ const Card: StyledComponent<"li", {}> = styled.li`
     display: flex;
     flex-direction: column;
     height: 500px;
-    width: 218px;
+    width: 200px;
   }
 `;
+
+const ImageDiv = styled.div`
+  height: 200px;
+  width: 200px;
+`;
+
 const CardImage = styled(Image)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: pink;
-  width: 220px;
-  height: 195px;
   border-radius: 13px 0px 0px 13px;
   z-index: 99;
 
   @media (max-width: 500px) {
     border-radius: 13px 13px 0px 0px;
-    width: 218px;
-    height: 160px;
   }
 `;
 
@@ -48,12 +50,12 @@ const Map: StyledComponent<"div", {}> = styled.div`
   justify-content: center;
   background-color: rgb(192, 255, 245);
   width: 160px;
-  height: 195px;
+  height: 185px;
   border-radius: 0px 13px 13px 0px;
 
   @media (max-width: 500px) {
     border-radius: 0px 0px 13px 13px;
-    width: 218px;
+    width: 200px;
     height: 100px;
   }
 `;
@@ -80,7 +82,7 @@ const CardDescription: StyledComponent<"article", {}> = styled.article`
   }
 
   @media (max-width: 500px) {
-    height: 135x;
+    height: 135px;
     width: 210px;
     h2 {
       font-size: 16px;
@@ -99,7 +101,6 @@ const CardButton = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
   margin: 10px;
   @media (max-width: 500px) {
     display: flex;
@@ -121,12 +122,16 @@ const CardProductoUser = ({
   return (
     <>
       <Card>
-        <CardImage
-          src={product.picture}
-          alt={product.title}
-          width={215}
-          height={216}
-        ></CardImage>
+        <ImageDiv>
+          <CardImage
+            src={product.picture}
+            alt={product.title}
+            width={200}
+            height={200}
+            layout="responsive"
+            objectFit="cover"
+          ></CardImage>
+        </ImageDiv>
         <CardDescription>
           <h2>{product.price} €</h2>
           <h3>{product.title}</h3>

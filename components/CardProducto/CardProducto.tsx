@@ -44,6 +44,10 @@ const CardDescription: StyledComponent<"li", {}> = styled.li`
   margin: 5px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 
+  :hover {
+    cursor: pointer;
+  }
+
   h2 {
     font-size: 16px;
     line-height: 0px;
@@ -84,7 +88,9 @@ const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
           src={product.picture}
           alt={product.title}
           width={215}
-          height={216}
+          height={215}
+          layout="responsive"
+          objectFit="cover"
         ></CardImage>
         <Link href={`/detail/${product._id}`} passHref>
           <CardDescription>
