@@ -6,6 +6,7 @@ import {
   updateProductThunk,
 } from "./thunks";
 import "@testing-library/jest-dom";
+import { Producto } from "../../types/Producto";
 
 describe("Given a load thunk function", () => {
   describe("When it's invoked", () => {
@@ -51,16 +52,23 @@ describe("Given a createProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const product = {
+      const formData = {
         _id: "123",
-        price: 10,
+        price: "10",
         title: "silla",
         description: "silla bonita",
         picture: "unafoto.jpg",
         category: "mueble",
       };
 
-      const createThunk = createProductThunk(product);
+      const data = new FormData();
+      data.append("description", formData.description);
+      data.append("title", formData.title);
+      data.append("price", formData.price);
+      data.append("category", formData.category);
+      data.append("picture", formData.picture);
+
+      const createThunk = createProductThunk(data);
 
       await createThunk(dispatch);
 
@@ -74,16 +82,32 @@ describe("Given a updateProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const product = {
+      const formData = {
         _id: "123",
-        price: 10,
+        price: "12",
         title: "silla",
         description: "silla bonita",
         picture: "unafoto.jpg",
         category: "mueble",
       };
 
-      const updateThunk = updateProductThunk(product);
+      const product: Producto = {
+        _id: "123",
+        price: "12",
+        title: "silla",
+        description: "silla bonita",
+        picture: "unafoto.jpg",
+        category: "mueble",
+      };
+
+      const data = new FormData();
+      data.append("description", formData.description);
+      data.append("title", formData.title);
+      data.append("price", formData.price);
+      data.append("category", formData.category);
+      data.append("picture", formData.picture);
+
+      const updateThunk = updateProductThunk(product, data);
 
       await updateThunk(dispatch);
 
