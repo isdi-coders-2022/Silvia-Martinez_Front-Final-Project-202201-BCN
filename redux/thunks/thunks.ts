@@ -66,7 +66,6 @@ export const updateProductThunk =
       `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${_id}`,
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
         body: data,
       }
     );
