@@ -102,7 +102,7 @@ const CardDetail = ({ product }: CardDetailProps): JSX.Element => {
       <Card>
         <CardHead>
           <p>Nombre Usuario</p>
-          <FontAwesomeIcon icon={faHeart} />
+          <FontAwesomeIcon icon={faHeart} title={"like-icon"} />
         </CardHead>
         <CardImage
           src={product.picture}
