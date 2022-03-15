@@ -52,7 +52,7 @@ describe("Given a createProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const formData = {
+      const product: Producto = {
         _id: "123",
         price: "10",
         title: "silla",
@@ -61,14 +61,7 @@ describe("Given a createProduct thunk function", () => {
         category: "mueble",
       };
 
-      const data = new FormData();
-      data.append("description", formData.description);
-      data.append("title", formData.title);
-      data.append("price", formData.price);
-      data.append("category", formData.category);
-      data.append("picture", formData.picture);
-
-      const createThunk = createProductThunk(data);
+      const createThunk = createProductThunk(product);
 
       await createThunk(dispatch);
 
@@ -82,15 +75,6 @@ describe("Given a updateProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const formData = {
-        _id: "123",
-        price: "12",
-        title: "silla",
-        description: "silla bonita",
-        picture: "unafoto.jpg",
-        category: "mueble",
-      };
-
       const product: Producto = {
         _id: "123",
         price: "12",
@@ -100,14 +84,7 @@ describe("Given a updateProduct thunk function", () => {
         category: "mueble",
       };
 
-      const data = new FormData();
-      data.append("description", formData.description);
-      data.append("title", formData.title);
-      data.append("price", formData.price);
-      data.append("category", formData.category);
-      data.append("picture", formData.picture);
-
-      const updateThunk = updateProductThunk(product, data);
+      const updateThunk = updateProductThunk(product);
 
       await updateThunk(dispatch);
 
