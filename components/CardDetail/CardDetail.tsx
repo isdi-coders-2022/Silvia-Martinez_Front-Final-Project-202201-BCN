@@ -3,7 +3,6 @@ import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 const Card: StyledComponent<"article", {}> = styled.article`
   position: relative;
