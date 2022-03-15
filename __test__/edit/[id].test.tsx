@@ -12,7 +12,7 @@ describe("Given an edit form page", () => {
         category: "muebles",
         description: "silla de madera",
         picture: "unafoto.jpg",
-        price: 14,
+        price: "14",
         title: "Silla",
       };
 
@@ -20,13 +20,11 @@ describe("Given an edit form page", () => {
 
       const inputDescription = screen.getByDisplayValue(producto.description);
       const inputCategory = screen.getByDisplayValue(producto.category);
-      const inputPicture = screen.getByDisplayValue(producto.picture);
       const inputPrice = screen.getByDisplayValue(producto.price);
       const inputTitle = screen.getByDisplayValue(producto.title);
 
       expect(inputDescription).toBeInTheDocument();
       expect(inputCategory).toBeInTheDocument();
-      expect(inputPicture).toBeInTheDocument();
       expect(inputPrice).toBeInTheDocument();
       expect(inputTitle).toBeInTheDocument();
     });

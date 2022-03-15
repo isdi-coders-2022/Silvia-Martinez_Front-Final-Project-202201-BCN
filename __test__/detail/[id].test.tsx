@@ -10,7 +10,7 @@ describe("Given a detial page", () => {
         category: "muebles",
         description: "silla de madera",
         picture: "unafoto.jpg",
-        price: 14,
+        price: "14",
         title: "Silla",
       };
       render(<DetailPage product={producto} />);
@@ -25,7 +25,7 @@ describe("Given a detial page", () => {
         category: "muebles",
         description: "silla de madera",
         picture: "unafoto.jpg",
-        price: 14,
+        price: "14",
         title: "Silla",
       };
       render(<DetailPage product={producto} />);

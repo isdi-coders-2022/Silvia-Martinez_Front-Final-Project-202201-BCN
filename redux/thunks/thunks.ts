@@ -41,21 +41,20 @@ export const deleteProductThunks =
   };
 
 export const createProductThunk =
-  ({ price, title, description, picture, category }: Producto) =>
-  async (dispatch: AppDispatch) => {
+  (product: Producto) => async (dispatch: AppDispatch) => {
+    const data = new FormData();
+    data.append("description", product.description);
+    data.append("title", product.title);
+    data.append("price", product.price);
+    data.append("category", product.category);
+    data.append("picture", product.picture);
+    data.append("lat", "41.38879");
+    data.append("long", "2.15899 ");
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_WALLAPLOP}products/create`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          price,
-          title,
-          description,
-          picture,
-          category,
-          location: { lat: 41.38879, long: 2.15899 },
-        }),
+        body: data,
       }
     );
     const newProduct = await response.json();
@@ -65,23 +64,22 @@ export const createProductThunk =
   };
 
 export const updateProductThunk =
-  ({ price, title, description, picture, category, _id }: Producto) =>
-  async (dispatch: AppDispatch) => {
+  (product: Producto) => async (dispatch: AppDispatch) => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${_id}`,
+      `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${product._id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          price,
-          title,
-          description,
-          picture,
-          category,
+          title: product.title,
+          description: product.description,
+          category: product.category,
+          price: product.price,
           location: { lat: 41.38879, long: 2.15899 },
         }),
       }
     );
+
     const updateProduct = await response.json();
     if (response.ok) {
       dispatch(updateProductActions(updateProduct));

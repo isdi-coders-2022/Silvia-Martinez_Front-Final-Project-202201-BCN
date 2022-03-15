@@ -6,6 +6,7 @@ import {
   updateProductThunk,
 } from "./thunks";
 import "@testing-library/jest-dom";
+import { Producto } from "../../types/Producto";
 
 describe("Given a load thunk function", () => {
   describe("When it's invoked", () => {
@@ -51,9 +52,9 @@ describe("Given a createProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const product = {
+      const product: Producto = {
         _id: "123",
-        price: 10,
+        price: "10",
         title: "silla",
         description: "silla bonita",
         picture: "unafoto.jpg",
@@ -74,9 +75,9 @@ describe("Given a updateProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const product = {
+      const product: Producto = {
         _id: "123",
-        price: 10,
+        price: "12",
         title: "silla",
         description: "silla bonita",
         picture: "unafoto.jpg",

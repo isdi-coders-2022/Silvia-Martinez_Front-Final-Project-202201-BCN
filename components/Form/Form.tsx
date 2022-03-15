@@ -65,7 +65,7 @@ const Form = ({ product }: FormProps): JSX.Element => {
         _id: "",
         title: "",
         description: "",
-        price: 0,
+        price: "",
         category: "",
         picture: "",
       };
@@ -76,7 +76,8 @@ const Form = ({ product }: FormProps): JSX.Element => {
 
   const onFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (isEditing) {
+
+    if (product) {
       dispatch(updateProductThunk(formData));
     } else {
       dispatch(createProductThunk(formData));
@@ -89,10 +90,20 @@ const Form = ({ product }: FormProps): JSX.Element => {
     setFormData(initialFields);
   };
 
-  const changeData = (event: ChangeEvent<HTMLInputElement>) => {
+  const changeData = (
+    event:
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLInputElement>
+  ) => {
     setFormData({
       ...formData,
-      [event.target.id]: event.target.value,
+      [event.target.id]:
+        event.target.type === "file"
+          ? (
+              (event as React.ChangeEvent<HTMLInputElement>).target
+                .files as FileList
+            )[0]
+          : event.target.value,
     });
   };
 
@@ -149,11 +160,10 @@ const Form = ({ product }: FormProps): JSX.Element => {
             <label htmlFor="picture">Imagen:</label>
             <StyledInput
               autoComplete="off"
-              type="text"
+              type="file"
               id="picture"
               placeholder="Imagen"
               onChange={changeData}
-              value={formData.picture}
             />
           </FormBlock>
         </StyleLineForm>

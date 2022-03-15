@@ -58,12 +58,12 @@ describe("Given a Form component", () => {
       const category = "muebles";
       const description = "silla de madera";
 
-      const producto: Producto = {
+      const product: Producto = {
         _id: "",
         category: "muebles",
         description: "silla de madera",
         picture: "",
-        price: 0,
+        price: "",
         title: "Silla",
       };
 
@@ -81,7 +81,7 @@ describe("Given a Form component", () => {
       userEvent.click(screen.getByRole("button"));
 
       expect(mockDispatch).toHaveBeenCalled();
-      expect(createProductThunk).toHaveBeenCalledWith(producto);
+      expect(createProductThunk).toHaveBeenCalledWith(product);
     });
   });
 });
