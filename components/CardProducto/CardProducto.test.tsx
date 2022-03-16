@@ -7,7 +7,7 @@ describe("Given a CardProducto Component", () => {
     test("Then it should render", () => {
       const product = {
         _id: "1234",
-        price: 10,
+        price: "10",
         title: "silla",
         description: "silla bonita",
         category: "mueble",

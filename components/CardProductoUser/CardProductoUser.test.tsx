@@ -8,14 +8,22 @@ describe("Given a CardProducto Component", () => {
     test("Then it should render", () => {
       const product: Producto = {
         _id: "1234",
-        price: 14,
+        price: "14",
         title: "silla",
         description: "silla bonita",
         category: "mueble",
         picture: "unafoto.jpg",
       };
 
-      render(<CardProductoUser product={product} onClick={() => {}} />);
+      const onClickAction = jest.fn();
+
+      render(
+        <CardProductoUser
+          product={product}
+          onClickDelete={onClickAction}
+          onClickUpdate={onClickAction}
+        />
+      );
 
       const text = screen.getByRole("heading", { name: "14 €" });
 
