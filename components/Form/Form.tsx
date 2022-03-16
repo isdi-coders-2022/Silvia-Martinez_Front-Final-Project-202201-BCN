@@ -8,7 +8,6 @@ import {
 import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
 
-import { RootState } from "../../redux/store";
 import { useRouter } from "next/router";
 
 const StyledForm = styled.form`
