@@ -1,6 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import styled, { StyledComponent } from "styled-components";
 import CardDetail from "../../components/CardDetail/CardDetail";
+import Loading from "../../components/Loading/Loading";
 import { Producto } from "../../types/Producto";
 
 const DisplayCard: StyledComponent<"div", {}> = styled.div`
@@ -17,6 +18,7 @@ const DetailPage = ({ product }: DetailProductProps): JSX.Element => {
   return (
     <>
       <DisplayCard>
+        {!product && <Loading />}
         <CardDetail product={product} />
       </DisplayCard>
     </>

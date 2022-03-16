@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useSelector } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
+import Loading from "../components/Loading/Loading";
 import ProductList from "../components/ProdcutList/ProductList";
 import { RootState, wrapper } from "../redux/store";
 import { loadProductsThunks } from "../redux/thunks/thunks";
@@ -20,6 +21,7 @@ const Home: NextPage = (): JSX.Element => {
   return (
     <>
       <Title>Cerca de ti</Title>
+      {!products && <Loading />}
       <ProductList products={products} />
     </>
   );
