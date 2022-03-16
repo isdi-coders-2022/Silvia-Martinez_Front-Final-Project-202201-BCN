@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
@@ -7,6 +7,9 @@ import {
 } from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
+
+import { RootState } from "../../redux/store";
+import { useRouter } from "next/router";
 
 const StyledForm = styled.form`
   background-color: #e5e5e5;
@@ -73,21 +76,17 @@ const Form = ({ product }: FormProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState(initialFields);
+  const router = useRouter();
 
   const onFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-
     if (product) {
       dispatch(updateProductThunk(formData));
+      router.push("/perfil");
     } else {
       dispatch(createProductThunk(formData));
+      router.push("/perfil");
     }
-
-    resetForm();
-  };
-
-  const resetForm = () => {
-    setFormData(initialFields);
   };
 
   const changeData = (
