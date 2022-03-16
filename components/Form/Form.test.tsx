@@ -2,8 +2,6 @@ import Form from "./Form";
 import { screen } from "@testing-library/react";
 import renderWithProviders from "../../jest.setup";
 import userEvent from "@testing-library/user-event";
-import { createProductThunk } from "../../redux/thunks/thunks";
-import { Producto } from "../../types/Producto";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
