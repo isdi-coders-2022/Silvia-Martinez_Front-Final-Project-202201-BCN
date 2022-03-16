@@ -10,6 +10,7 @@ import {
   loadProductsUserThunks,
 } from "../redux/thunks/thunks";
 import { Producto } from "../types/Producto";
+import { toast } from "react-toastify";
 
 const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   display: flex;
@@ -45,6 +46,7 @@ const Perfil = (): JSX.Element => {
   const router = useRouter();
 
   const deleteProduct = (id: string) => {
+    toast("Has borrado un producto 😢");
     dispatch(deleteProductThunks(id));
   };
 
