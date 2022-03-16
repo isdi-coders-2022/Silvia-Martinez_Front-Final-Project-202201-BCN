@@ -11,6 +11,7 @@ import {
 } from "../redux/thunks/thunks";
 import { Producto } from "../types/Producto";
 import { toast } from "react-toastify";
+import Loading from "../components/Loading/Loading";
 
 const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   display: flex;
@@ -65,7 +66,7 @@ const Perfil = (): JSX.Element => {
           onClick={() => router.push("/add-product")}
         />
       </DisplayTitle>
-
+      {!products && <Loading />}
       <ListProduct>
         {" "}
         {products.map((producto: Producto) => (

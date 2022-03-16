@@ -1,6 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import styled from "styled-components";
 import Form from "../../components/Form/Form";
+import Loading from "../../components/Loading/Loading";
 import { Producto } from "../../types/Producto";
 
 const DisplayForm = styled.div`
@@ -17,6 +18,7 @@ const EditProduct = ({ product }: EditProductProps): JSX.Element => {
   return (
     <>
       <DisplayForm>
+        {!product && <Loading />}
         <Form product={product}></Form>
       </DisplayForm>
     </>
