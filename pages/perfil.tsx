@@ -18,6 +18,7 @@ const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   position: relative;
   top: 95px;
   align-items: center;
+  margin-right: 20px;
   justify-content: space-between;
 `;
 
@@ -32,7 +33,8 @@ const Title: StyledComponent<"h2", {}> = styled.h2`
 const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   position: relative;
   top: 100px;
   flex-wrap: wrap;
@@ -63,6 +65,7 @@ const Perfil = (): JSX.Element => {
           onClick={() => router.push("/add-product")}
         />
       </DisplayTitle>
+
       <ListProduct>
         {" "}
         {products.map((producto: Producto) => (
