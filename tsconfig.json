@@ -21,7 +21,8 @@
     "**/*.tsx",
     "jest.config.js",
     "jest.setup.js",
-    "setupTests.js"
+    "setupTests.js",
+    "components/Toast/Toast.js"
   ],
   "exclude": ["node_modules"]
 }

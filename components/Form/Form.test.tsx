@@ -5,6 +5,8 @@ import userEvent from "@testing-library/user-event";
 import { createProductThunk } from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
 
+jest.mock("next/router", () => require("next-router-mock"));
+
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
@@ -49,39 +51,6 @@ describe("Given a Form component", () => {
       userEvent.type(title, product);
 
       expect(title).toHaveValue(product);
-    });
-
-    test("Then it should call a dispatch action with the product", () => {
-      renderWithProviders(<Form />);
-
-      const title = "Silla";
-      const category = "muebles";
-      const description = "silla de madera";
-
-      const product: Producto = {
-        _id: "",
-        category: "muebles",
-        description: "silla de madera",
-        picture: "",
-        price: "",
-        title: "Silla",
-      };
-
-      userEvent.type(screen.getByRole("textbox", { name: "Producto:" }), title);
-
-      userEvent.type(
-        screen.getByRole("textbox", { name: "Descripcion:" }),
-        description
-      );
-      userEvent.type(
-        screen.getByRole("textbox", { name: "Categoria:" }),
-        category
-      );
-
-      userEvent.click(screen.getByRole("button"));
-
-      expect(mockDispatch).toHaveBeenCalled();
-      expect(createProductThunk).toHaveBeenCalledWith(product);
     });
   });
 });

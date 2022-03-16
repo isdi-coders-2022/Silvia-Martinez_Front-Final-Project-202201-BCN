@@ -7,10 +7,13 @@ import {
   updateProductActions,
 } from "../actions/actionCreator";
 import { AppDispatch } from "../store";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 interface ProductsResponse {
   products: Producto[];
 }
+
 export const loadProductsThunks = async (dispatch: AppDispatch) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_WALLAPLOP}products/list`
@@ -50,6 +53,7 @@ export const createProductThunk =
     data.append("picture", product.picture);
     data.append("lat", "41.38879");
     data.append("long", "2.15899 ");
+
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_WALLAPLOP}products/create`,
       {
@@ -60,6 +64,7 @@ export const createProductThunk =
     const newProduct = await response.json();
     if (response.ok) {
       dispatch(createProductActions(newProduct));
+      toast("Has creado un nuevo producto 🥳");
     }
   };
 
@@ -83,5 +88,6 @@ export const updateProductThunk =
     const updateProduct = await response.json();
     if (response.ok) {
       dispatch(updateProductActions(updateProduct));
+      toast("Has modificado tu producto 🌈");
     }
   };
