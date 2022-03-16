@@ -8,7 +8,7 @@ describe("Given productReducers", () => {
       const products: Producto[] = [
         {
           _id: "1234",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -16,7 +16,7 @@ describe("Given productReducers", () => {
         },
         {
           _id: "4456",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -40,7 +40,7 @@ describe("Given productReducers", () => {
       const products: Producto[] = [
         {
           _id: "1234",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -48,7 +48,7 @@ describe("Given productReducers", () => {
         },
         {
           _id: "4456",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -72,7 +72,7 @@ describe("Given productReducers", () => {
       const currentProducts: Producto[] = [
         {
           _id: "1234",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -100,7 +100,7 @@ describe("Given productReducers", () => {
       const currentProducts: Producto[] = [
         {
           _id: "1234",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -108,7 +108,7 @@ describe("Given productReducers", () => {
         },
         {
           _id: "1235",
-          price: 10,
+          price: "10",
           title: "taburete",
           description: "taburete feo",
           category: "mueble",
@@ -119,7 +119,7 @@ describe("Given productReducers", () => {
       const expectedProducts: Producto[] = [
         {
           _id: "1235",
-          price: 10,
+          price: "10",
           title: "taburete",
           description: "taburete feo",
           category: "mueble",
@@ -142,7 +142,7 @@ describe("Given productReducers", () => {
       const currentProducts: Producto[] = [
         {
           _id: "1234",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -152,7 +152,7 @@ describe("Given productReducers", () => {
       const product: Producto[] = [
         {
           _id: "1235",
-          price: 10,
+          price: "10",
           title: "taburete",
           description: "taburete feo",
           category: "mueble",
@@ -175,7 +175,7 @@ describe("Given productReducers", () => {
       const currentProducts: Producto[] = [
         {
           _id: "1234",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -185,7 +185,7 @@ describe("Given productReducers", () => {
 
       const product: Producto = {
         _id: "1234",
-        price: 10,
+        price: "10",
         title: "silla",
         description: "silla fea",
         category: "mueble",
