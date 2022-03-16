@@ -1,4 +1,5 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import styled, { StyledComponent } from "styled-components";
 import CardDetail from "../../components/CardDetail/CardDetail";
 import Loading from "../../components/Loading/Loading";
@@ -15,34 +16,40 @@ interface DetailProductProps {
 }
 
 const DetailPage = ({ product }: DetailProductProps): JSX.Element => {
+  if (!product) {
+    return <Loading />;
+  }
   return (
     <>
       <DisplayCard>
-        {!product && <Loading />}
         <CardDetail product={product} />
       </DisplayCard>
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_WALLAPLOP}products/list`
   );
-
   const responseBody = await response.json();
   const product: Producto[] = responseBody.products.find(
     (responseProduct: Producto) => {
-      return responseProduct._id === context.params?.id;
+      return responseProduct._id === params?.id;
     }
   );
 
   return {
-    props: {
-      product,
-    },
+    props: { product },
+    revalidate: 60,
   };
 };
+
 export default DetailPage;
