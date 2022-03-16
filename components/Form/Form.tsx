@@ -9,6 +9,8 @@ import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
 
 import { useRouter } from "next/router";
+import { error } from "console";
+import { toast } from "react-toastify";
 
 const StyledForm = styled.form`
   background-color: #e5e5e5;
@@ -77,14 +79,18 @@ const Form = ({ product }: FormProps): JSX.Element => {
   const [formData, setFormData] = useState(initialFields);
   const router = useRouter();
 
-  const onFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (product) {
-      dispatch(updateProductThunk(formData));
-      router.push("/perfil");
-    } else {
-      dispatch(createProductThunk(formData));
-      router.push("/perfil");
+  const onFormSubmit = async (event: React.FormEvent) => {
+    try {
+      event.preventDefault();
+      if (product) {
+        dispatch(updateProductThunk(formData));
+        await router.push("/perfil");
+      } else {
+        dispatch(createProductThunk(formData));
+        await router.push("/perfil");
+      }
+    } catch (error) {
+      toast("no ha funcionado");
     }
   };
 
