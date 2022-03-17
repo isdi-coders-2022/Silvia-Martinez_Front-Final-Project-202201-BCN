@@ -7,7 +7,7 @@ describe("Given a loadProductsActions", () => {
       const products: Producto[] = [
         {
           _id: "124",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
@@ -28,7 +28,7 @@ describe("Given a deleteProductAction", () => {
       const products: Producto[] = [
         {
           _id: "124",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
