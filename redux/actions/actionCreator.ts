@@ -1,4 +1,5 @@
 import { Producto } from "../../types/Producto";
+import { User } from "../../types/User";
 import actionTypes from "./actionTypes";
 
 export const loadProductsActions = (products: Producto[]) => ({
@@ -24,4 +25,14 @@ export const createProductActions = (product: Producto) => ({
 export const updateProductActions = (product: Producto) => ({
   type: actionTypes.updateProduct,
   product,
+});
+
+export const loginUserActions = (user: User) => ({
+  type: actionTypes.loginUser,
+  user,
+});
+
+export const registerUserActions = (user: User) => ({
+  type: actionTypes.registerUser,
+  user,
 });
