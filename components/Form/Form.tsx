@@ -7,9 +7,7 @@ import {
 } from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
-
 import { useRouter } from "next/router";
-import { error } from "console";
 import { toast } from "react-toastify";
 
 const StyledForm = styled.form`
@@ -160,16 +158,20 @@ const Form = ({ product }: FormProps): JSX.Element => {
               value={formData.category}
             />
           </FormBlock>
-          <FormBlock className="form-block">
-            <label htmlFor="picture">Imagen:</label>
-            <StyledInput
-              autoComplete="off"
-              type="file"
-              id="picture"
-              placeholder="Imagen"
-              onChange={changeData}
-            />
-          </FormBlock>
+          {isEditing ? (
+            ""
+          ) : (
+            <FormBlock className="form-block">
+              <label htmlFor="picture">Imagen:</label>
+              <StyledInput
+                autoComplete="off"
+                type="file"
+                id="picture"
+                placeholder="Imagen"
+                onChange={changeData}
+              />
+            </FormBlock>
+          )}
         </StyleLineForm>
         <StyleButtons>
           <Button
