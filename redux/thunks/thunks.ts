@@ -4,11 +4,12 @@ import {
   deleteProductActions,
   loadProductsActions,
   loadProductsUserActions,
+  registerUserActions,
   updateProductActions,
 } from "../actions/actionCreator";
 import { AppDispatch } from "../store";
 import { toast } from "react-toastify";
-import { useRouter } from "next/router";
+import { User } from "../../types/User";
 
 interface ProductsResponse {
   products: Producto[];
@@ -89,5 +90,28 @@ export const updateProductThunk =
     if (response.ok) {
       dispatch(updateProductActions(updateProduct));
       toast("Has modificado tu producto 🌈");
+    }
+  };
+
+export const registerUserThunks =
+  (user: User) => async (dispatch: AppDispatch) => {
+    const data = new FormData();
+    data.append("name", user.name);
+    data.append("username", user.username);
+    data.append("password", user.password);
+    data.append("email", user.password);
+    data.append("picture", user.picture);
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_WALLAPLOP}user/register`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const newUser = await response.json();
+    if (response.ok) {
+      dispatch(registerUserActions(newUser));
+      toast("Te has registrado 🦋");
     }
   };
