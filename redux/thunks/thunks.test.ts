@@ -3,10 +3,13 @@ import {
   deleteProductThunks,
   loadProductsThunks,
   loadProductsUserThunks,
+  registerUserThunks,
   updateProductThunk,
 } from "./thunks";
 import "@testing-library/jest-dom";
 import { Producto } from "../../types/Producto";
+import { User } from "../../types/User";
+import { setUncaughtExceptionCaptureCallback } from "process";
 
 describe("Given a load thunk function", () => {
   describe("When it's invoked", () => {
@@ -87,6 +90,29 @@ describe("Given a updateProduct thunk function", () => {
       const updateThunk = updateProductThunk(product);
 
       await updateThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a registerUser thunk function", () => {
+  describe("When it's invoked", () => {
+    test("Then it should called a dispatch", async () => {
+      const dispatch = jest.fn();
+
+      const user: User = {
+        _id: "",
+        name: "Pepe",
+        username: "Pepito",
+        email: "pepe@pepe.com",
+        password: "1234",
+        picture: "",
+      };
+
+      const registerThunk = registerUserThunks(user);
+
+      await registerThunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
