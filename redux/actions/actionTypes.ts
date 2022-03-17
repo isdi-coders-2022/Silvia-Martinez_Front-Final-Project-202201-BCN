@@ -4,6 +4,8 @@ const actionTypes = {
   deleteProduct: "delete-product",
   createProduct: "create-product",
   updateProduct: "update-product",
+  loginUser: "login-user",
+  registerUser: "register-user",
 };
 
 export default actionTypes;
