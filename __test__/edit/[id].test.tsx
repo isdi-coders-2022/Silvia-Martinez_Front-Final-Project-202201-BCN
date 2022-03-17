@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-import Form from "../../components/Form/Form";
 import renderWithProviders from "../../jest.setup";
 import EditProduct from "../../pages/edit/[id]";
 import { Producto } from "../../types/Producto";

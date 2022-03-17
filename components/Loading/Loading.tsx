@@ -2,6 +2,8 @@ import { PuffLoader } from "react-spinners";
 import styled from "styled-components";
 
 const LoadingContainer = styled.section`
+  position: relative;
+  top: 100px;
   display: flex;
   flex-direction: column;
   width: 100vw;
