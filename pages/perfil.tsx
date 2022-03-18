@@ -14,6 +14,7 @@ import { Producto } from "../types/Producto";
 import { toast } from "react-toastify";
 import PerfilUser from "../components/PerfilUser/PerfilUser";
 import { User } from "../types/User";
+import { logoutUserActions } from "../redux/actions/actionCreator";
 
 const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   display: flex;
@@ -65,6 +66,13 @@ const Perfil = (): JSX.Element => {
     dispatch(deleteProductThunks(id));
   };
 
+  const logOut = () => {
+    localStorage.removeItem("token");
+    toast("Hasta luego!🖖🏽");
+    dispatch(logoutUserActions());
+    router.push("/");
+  };
+
   useEffect(() => {
     dispatch(loadProductsUserThunks);
     dispatch(LoadUserThunks);
@@ -80,7 +88,7 @@ const Perfil = (): JSX.Element => {
         />
       </DisplayTitle>
       <DisplayPerfil>
-        <PerfilUser products={products.length} user={user} />
+        <PerfilUser products={products.length} user={user} onClick={logOut} />
         <ListProduct>
           {" "}
           {products.map((producto: Producto) => (

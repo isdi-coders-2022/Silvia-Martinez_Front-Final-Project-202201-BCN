@@ -7,6 +7,7 @@ const actionTypes = {
   loginUser: "login-user",
   registerUser: "register-user",
   loadUser: "load-user",
+  logoutUser: "logout-user",
 };
 
 export default actionTypes;

@@ -1,4 +1,5 @@
 import Image, { ImageProps } from "next/image";
+import { AnyAction } from "redux";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 import { User } from "../../types/User";
@@ -63,9 +64,14 @@ const StyledButton: StyledComponent<"div", {}> = styled.div`
 interface PerfilUserProps {
   user: User;
   products: number;
+  onClick: () => void;
 }
 
-const PerfilUser = ({ user, products }: PerfilUserProps): JSX.Element => {
+const PerfilUser = ({
+  user,
+  products,
+  onClick,
+}: PerfilUserProps): JSX.Element => {
   return (
     <>
       <Profile>
@@ -88,7 +94,7 @@ const PerfilUser = ({ user, products }: PerfilUserProps): JSX.Element => {
           </ImageDiv>
         </Card>
         <StyledButton>
-          <Button text="Log Out" onClick={() => {}} />
+          <Button text="Log Out" onClick={onClick} />
         </StyledButton>
       </Profile>
     </>
