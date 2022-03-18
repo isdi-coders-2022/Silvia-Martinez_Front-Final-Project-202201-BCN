@@ -4,6 +4,7 @@ import {
   deleteProductActions,
   loadProductsActions,
   loadProductsUserActions,
+  loadUserActions,
   loginUserActions,
   registerUserActions,
   updateProductActions,
@@ -158,3 +159,19 @@ export const loginUserThunks =
       toast("Ahora estas dentro!🐙");
     }
   };
+
+export const LoadUserThunks = async (dispatch: AppDispatch) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_WALLAPLOP}user/user`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
+  );
+  const user: User = await response.json();
+
+  dispatch(loadUserActions(user));
+};
