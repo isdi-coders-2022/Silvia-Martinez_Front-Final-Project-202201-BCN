@@ -41,3 +41,7 @@ export const loadUserActions = (user: User) => ({
   type: actionTypes.loadUser,
   user,
 });
+
+export const logoutUserActions = () => ({
+  type: actionTypes.logoutUser,
+});
