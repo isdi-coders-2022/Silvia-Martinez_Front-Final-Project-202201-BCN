@@ -28,6 +28,8 @@ const userReducers = (currentUser: User = initUser, action: AnyAction) => {
     case actionTypes.loadUser:
       newUser = { ...action.user };
       break;
+    case actionTypes.logoutUser:
+      newUser = initUser;
     default:
       newUser = currentUser;
       break;
