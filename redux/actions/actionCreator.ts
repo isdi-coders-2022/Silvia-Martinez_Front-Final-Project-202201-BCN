@@ -36,3 +36,8 @@ export const registerUserActions = (user: User) => ({
   type: actionTypes.registerUser,
   user,
 });
+
+export const loadUserActions = (user: User) => ({
+  type: actionTypes.loadUser,
+  user,
+});

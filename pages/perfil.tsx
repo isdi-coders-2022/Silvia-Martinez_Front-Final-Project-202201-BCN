@@ -8,11 +8,12 @@ import { RootState } from "../redux/store";
 import {
   deleteProductThunks,
   loadProductsUserThunks,
+  LoadUserThunks,
 } from "../redux/thunks/thunks";
 import { Producto } from "../types/Producto";
 import { toast } from "react-toastify";
-import Loading from "../components/Loading/Loading";
 import PerfilUser from "../components/PerfilUser/PerfilUser";
+import { User } from "../types/User";
 
 const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   display: flex;
@@ -34,7 +35,7 @@ const Title: StyledComponent<"h2", {}> = styled.h2`
 
 const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -46,11 +47,16 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
 
 const DisplayPerfil: StyledComponent<"div", {}> = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 `;
 
 const Perfil = (): JSX.Element => {
-  const products = useSelector((state: RootState) => state.products);
-  const user = useSelector((state: RootState) => state.user);
+  const products: Producto[] = useSelector(
+    (state: RootState) => state.products
+  );
+  const user: User = useSelector((state: RootState) => state.user);
+
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -61,6 +67,7 @@ const Perfil = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(loadProductsUserThunks);
+    dispatch(LoadUserThunks);
   }, [dispatch]);
 
   return (
@@ -74,7 +81,6 @@ const Perfil = (): JSX.Element => {
       </DisplayTitle>
       <DisplayPerfil>
         <PerfilUser products={products.length} user={user} />
-        {!products && <Loading />}
         <ListProduct>
           {" "}
           {products.map((producto: Producto) => (

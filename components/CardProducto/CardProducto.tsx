@@ -14,6 +14,7 @@ const Card: StyledComponent<"article", {}> = styled.article`
   margin: 5px;
   :hover {
     border: 1px solid #fd9cca;
+    cursor: pointer;
   }
   @media (max-width: 500px) {
     height: 253px;
@@ -42,10 +43,6 @@ const CardDescription: StyledComponent<"li", {}> = styled.li`
   align-items: flex-start;
   margin: 5px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-
-  :hover {
-    cursor: pointer;
-  }
 
   h2 {
     font-size: 16px;
@@ -82,21 +79,23 @@ const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
   return (
     <>
       <Card>
-        <CardImage
-          src={product.picture}
-          alt={product.title}
-          width={215}
-          height={215}
-          layout="responsive"
-          objectFit="cover"
-        ></CardImage>
         <Link href={`/detail/${product._id}`} passHref>
-          <CardDescription>
-            <h2>{product.price} €</h2>
-            <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <p> {product.category}</p>
-          </CardDescription>
+          <div>
+            <CardImage
+              src={product.picture}
+              alt={product.title}
+              width={215}
+              height={215}
+              layout="responsive"
+              objectFit="cover"
+            ></CardImage>
+            <CardDescription>
+              <h2>{product.price} €</h2>
+              <h3>{product.title}</h3>
+              <p>{product.description}</p>
+              <p> {product.category}</p>
+            </CardDescription>
+          </div>
         </Link>
       </Card>
     </>

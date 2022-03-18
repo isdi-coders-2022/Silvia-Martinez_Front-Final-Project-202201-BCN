@@ -6,6 +6,7 @@ const actionTypes = {
   updateProduct: "update-product",
   loginUser: "login-user",
   registerUser: "register-user",
+  loadUser: "load-user",
 };
 
 export default actionTypes;
