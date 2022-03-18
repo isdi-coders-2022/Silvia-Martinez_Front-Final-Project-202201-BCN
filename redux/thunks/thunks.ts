@@ -88,7 +88,10 @@ export const updateProductThunk =
       `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${product._id}`,
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
         body: JSON.stringify({
           title: product.title,
           description: product.description,
