@@ -1,15 +1,17 @@
+import Image, { ImageProps } from "next/image";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 import { User } from "../../types/User";
 import Button from "../Button/Button";
 
-const Profile: StyledComponent<"section", {}> = styled.section`
+const Profile: StyledComponent<"div", {}> = styled.div`
   position: relative;
   top: 100px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   background-color: rgba(229, 229, 229, 1);
-  width: 400px;
+  width: 300px;
   height: 300px;
   border-radius: 13px;
   border: 2px solid #fd9cca;
@@ -31,14 +33,20 @@ const Description: StyledComponent<"section", {}> = styled.section`
   margin-bottom: 20px;
 `;
 
-const Picture: StyledComponent<"div", {}> = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 75px;
-  height: 75px;
-  border: 1px solid #fd9cca;
-  border-radius: 50%;
+const ImageDiv = styled.div`
+  height: 100px;
+  width: 100px;
   margin-right: 20px;
+  border-radius: 50%;
+`;
+
+const Picture = styled(Image)`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: pink;
+  border-radius: 50%;
+  z-index: 99;
 `;
 
 const Card: StyledComponent<"div", {}> = styled.div`
@@ -54,7 +62,7 @@ const StyledButton: StyledComponent<"div", {}> = styled.div`
 
 interface PerfilUserProps {
   user: User;
-  products: Producto[];
+  products: number;
 }
 
 const PerfilUser = ({ user, products }: PerfilUserProps): JSX.Element => {
@@ -64,11 +72,20 @@ const PerfilUser = ({ user, products }: PerfilUserProps): JSX.Element => {
         <Title>Tus datos</Title>
         <Card>
           <Description>
-            <p>Usuario: Pepito</p>
-            <p>Nombre: Pepe</p>
+            <p>Usuario: {user.username}</p>
+            <p>Nombre: {user.name}</p>
             <p>Tienes {products} producto subidos</p>
           </Description>
-          <Picture></Picture>
+          <ImageDiv>
+            <Picture
+              src={user.picture}
+              alt={user.name}
+              width={50}
+              height={50}
+              layout="responsive"
+              objectFit="cover"
+            />
+          </ImageDiv>
         </Card>
         <StyledButton>
           <Button text="Log Out" onClick={() => {}} />
