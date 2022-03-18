@@ -3,7 +3,7 @@ import actionTypes from "../actions/actionTypes";
 import userReducers from "./userReducer";
 
 describe("Given userReducers", () => {
-  describe("When given a current obejct and action", () => {
+  describe("When given a current obejct and  register action", () => {
     test("Then should return a  with current objects and actions", () => {
       const user: User = {
         _id: "",
@@ -32,8 +32,8 @@ describe("Given userReducers", () => {
     });
   });
 
-  describe("When given a currentProduct and a action that is not in actionCreators", () => {
-    test("Then should return the current list because its using default statement", () => {
+  describe("When given a currentUser and a action that is not in actionCreators", () => {
+    test("Then should return the current user because its using default statement", () => {
       const currentUser: User = {
         _id: "",
         name: "Pepe",
@@ -66,6 +66,34 @@ describe("Given userReducers", () => {
       const receivedUser = userReducers(currentUser, action);
 
       expect(receivedUser).toEqual(currentUser);
+    });
+  });
+  describe("When given a current obejct and  login action", () => {
+    test("Then should return a  with current objects and actions", () => {
+      const user: User = {
+        _id: "",
+        name: "Pepe",
+        username: "Pepito",
+        email: "pepe@pepe.com",
+        password: "1234",
+        picture: "",
+      };
+      const currentUser: User = {
+        _id: "",
+        name: "",
+        username: "",
+        email: "",
+        password: "",
+        picture: "",
+      };
+      const action = {
+        type: actionTypes.loginUser,
+        user,
+      };
+
+      const newUser = userReducers(currentUser, action);
+
+      expect(newUser).toStrictEqual(user);
     });
   });
 });
