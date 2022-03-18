@@ -20,6 +20,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/react-redux": "^7.1.23",
     "babel-plugin-styled-components": "^2.0.6",
+    "jwt-decode": "^3.1.2",
     "next": "12.1.0",
     "next-redux-wrapper": "^7.0.5",
     "next-router-mock": "^0.6.5",

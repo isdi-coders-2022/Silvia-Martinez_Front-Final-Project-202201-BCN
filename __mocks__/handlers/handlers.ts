@@ -97,4 +97,17 @@ export const handlers = [
       );
     }
   ),
+  rest.post(`${process.env.NEXT_PUBLIC_WALLAPLOP}user/login`, (req, res, ctx) =>
+    res(
+      ctx.status(201),
+      ctx.json({
+        _id: "",
+        name: "Pepe",
+        username: "Pepito",
+        email: "pepe@pepe.com",
+        password: "1234",
+        picture: "",
+      })
+    )
+  ),
 ];

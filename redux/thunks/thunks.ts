@@ -4,12 +4,14 @@ import {
   deleteProductActions,
   loadProductsActions,
   loadProductsUserActions,
+  loginUserActions,
   registerUserActions,
   updateProductActions,
 } from "../actions/actionCreator";
 import { AppDispatch } from "../store";
 import { toast } from "react-toastify";
 import { User } from "../../types/User";
+import jwtDecode from "jwt-decode";
 
 interface ProductsResponse {
   products: Producto[];
@@ -26,7 +28,14 @@ export const loadProductsThunks = async (dispatch: AppDispatch) => {
 
 export const loadProductsUserThunks = async (dispatch: AppDispatch) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_WALLAPLOP}products/user`
+    `${process.env.NEXT_PUBLIC_WALLAPLOP}products/user`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
   );
   const jsonRespone: ProductsResponse = await response.json();
 
@@ -60,6 +69,9 @@ export const createProductThunk =
       {
         method: "POST",
         body: data,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
     const newProduct = await response.json();
@@ -111,7 +123,38 @@ export const registerUserThunks =
     );
     const newUser = await response.json();
     if (response.ok) {
+      dispatch(loginUserThunks(user));
       dispatch(registerUserActions(newUser));
       toast("Te has registrado 🦋");
+    }
+  };
+
+export const loginUserThunks =
+  (user: User) => async (dispatch: AppDispatch) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_WALLAPLOP}user/login`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: user.username,
+          password: user.password,
+        }),
+      }
+    );
+
+    if (response.ok) {
+      const tokenResponse = await response.json();
+      const userResponse: User = await jwtDecode(tokenResponse.token);
+      localStorage.setItem(
+        "UserToken",
+        JSON.stringify({
+          ...userResponse,
+          token: tokenResponse.token,
+        })
+      );
+      localStorage.setItem("token", tokenResponse.token);
+      dispatch(loginUserActions(user));
+      toast("Ahora estas dentro!🐙");
     }
   };
