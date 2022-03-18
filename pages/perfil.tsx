@@ -12,6 +12,7 @@ import {
 import { Producto } from "../types/Producto";
 import { toast } from "react-toastify";
 import Loading from "../components/Loading/Loading";
+import PerfilUser from "../components/PerfilUser/PerfilUser";
 
 const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   display: flex;
@@ -43,8 +44,13 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   padding: 0px;
 `;
 
+const DisplayPerfil: StyledComponent<"div", {}> = styled.div`
+  display: flex;
+`;
+
 const Perfil = (): JSX.Element => {
   const products = useSelector((state: RootState) => state.products);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -66,18 +72,21 @@ const Perfil = (): JSX.Element => {
           onClick={() => router.push("/add-product")}
         />
       </DisplayTitle>
-      {!products && <Loading />}
-      <ListProduct>
-        {" "}
-        {products.map((producto: Producto) => (
-          <CardProductoUser
-            key={producto._id}
-            product={producto}
-            onClickDelete={() => deleteProduct(producto._id)}
-            onClickUpdate={() => router.push(`/edit/${producto._id}`)}
-          />
-        ))}{" "}
-      </ListProduct>
+      <DisplayPerfil>
+        <PerfilUser products={products.length} user={user} />
+        {!products && <Loading />}
+        <ListProduct>
+          {" "}
+          {products.map((producto: Producto) => (
+            <CardProductoUser
+              key={producto._id}
+              product={producto}
+              onClickDelete={() => deleteProduct(producto._id)}
+              onClickUpdate={() => router.push(`/edit/${producto._id}`)}
+            />
+          ))}{" "}
+        </ListProduct>
+      </DisplayPerfil>
     </>
   );
 };
