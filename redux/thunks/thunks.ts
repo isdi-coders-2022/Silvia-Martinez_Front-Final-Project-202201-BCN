@@ -148,7 +148,7 @@ export const loginUserThunks =
       const tokenResponse = await response.json();
       const userResponse: User = await jwtDecode(tokenResponse.token);
       localStorage.setItem(
-        "UserToken",
+        "token",
         JSON.stringify({
           ...userResponse,
           token: tokenResponse.token,
