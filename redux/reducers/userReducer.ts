@@ -1,10 +1,8 @@
-import { HYDRATE } from "next-redux-wrapper";
 import { AnyAction } from "redux";
 import { User } from "../../types/User";
 import actionTypes from "../actions/actionTypes";
 
-/* const initUser = JSON.parse(localStorage.getItem("UserToken")) || {}; */
-const user = {
+const initUser: User = {
   _id: "",
   name: "",
   username: "",
@@ -13,13 +11,10 @@ const user = {
   picture: "",
 };
 
-const userReducers = (currentUser: User = user, action: AnyAction) => {
+const userReducers = (currentUser: User = initUser, action: AnyAction) => {
   let newUser: User;
 
   switch (action.type) {
-    case HYDRATE:
-      newUser = { ...action.payload.user };
-      break;
     case actionTypes.registerUser:
       newUser = { ...action.user };
       break;
