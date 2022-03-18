@@ -12,7 +12,7 @@ const Card: StyledComponent<"li", {}> = styled.li`
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
-  margin: 5px;
+  margin: 20px;
   :hover {
     border: 1px solid #fd9cca;
   }
