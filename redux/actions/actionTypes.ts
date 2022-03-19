@@ -1,5 +1,6 @@
 const actionTypes = {
   loadProducts: "load-products",
+  loadProduct: "load-product",
   loadUserProducts: "load-user-products",
   deleteProduct: "delete-product",
   createProduct: "create-product",

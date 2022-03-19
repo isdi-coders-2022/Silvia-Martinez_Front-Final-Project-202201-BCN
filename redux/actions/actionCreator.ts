@@ -7,6 +7,11 @@ export const loadProductsActions = (products: Producto[]) => ({
   products,
 });
 
+export const loadProductAction = (product: Producto) => ({
+  type: actionTypes.loadProduct,
+  product,
+});
+
 export const loadProductsUserActions = (products: Producto[]) => ({
   type: actionTypes.loadUserProducts,
   products,
