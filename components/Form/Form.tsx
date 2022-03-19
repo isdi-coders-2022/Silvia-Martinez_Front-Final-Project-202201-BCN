@@ -70,6 +70,14 @@ const Form = ({ product }: FormProps): JSX.Element => {
         price: "",
         category: "",
         picture: "",
+        userID: {
+          name: "",
+          username: "",
+          _id: "",
+          email: "",
+          password: "",
+          picture: "",
+        },
       };
 
   const dispatch = useDispatch();
