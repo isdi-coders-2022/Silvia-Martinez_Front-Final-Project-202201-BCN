@@ -110,4 +110,17 @@ export const handlers = [
       })
     )
   ),
+  rest.get(`${process.env.NEXT_PUBLIC_WALLAPLOP}user/user`, (req, res, ctx) =>
+    res(
+      ctx.status(201),
+      ctx.json({
+        _id: "",
+        name: "",
+        username: "Pepito",
+        email: "pepe@pepe.com",
+        password: "1234",
+        picture: "",
+      })
+    )
+  ),
 ];
