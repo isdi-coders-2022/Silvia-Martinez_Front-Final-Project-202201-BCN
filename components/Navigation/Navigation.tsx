@@ -10,7 +10,7 @@ const NavList: StyledComponent<"div", {}> = styled.div`
   justify-content: space-between;
   position: absolute;
   top: 0;
-  background-color: rgba(196, 196, 196, 0.16);
+  border-bottom: 2px solid rgba(196, 196, 196, 0.16);
   height: 100px;
   width: 100vw;
 `;
@@ -19,6 +19,7 @@ const Logo: StyledComponent<"div", {}> = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-left: 30px;
+  margin: 30px;
 `;
 
 const List: StyledComponent<"ul", {}> = styled.ul`
@@ -39,14 +40,28 @@ const ListItem: StyledComponent<"li", {}> = styled.li`
     text-decoration: none;
     color: black;
   }
+
+  :hover {
+    svg {
+      color: #fd9cca;
+      cursor: pointer;
+    }
+    p {
+      color: #fd9cca;
+    }
+  }
 `;
 
 export const Navigation = (): JSX.Element => {
   return (
     <NavList>
-      <Logo>
-        <Image src={logo} alt={"logo"} width={50} height={50} />
-      </Logo>
+      <Link href={"/"}>
+        <a>
+          <Logo>
+            <Image src={logo} alt={"logo"} width={50} height={50} />
+          </Logo>
+        </a>
+      </Link>
       <List>
         <ListItem>
           <Link href={"/"}>
