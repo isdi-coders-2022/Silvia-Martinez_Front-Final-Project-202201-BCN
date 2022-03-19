@@ -2,6 +2,7 @@ import { Producto } from "../../types/Producto";
 import {
   createProductActions,
   deleteProductActions,
+  loadProductAction,
   loadProductsActions,
   loadProductsUserActions,
   loadUserActions,
@@ -26,6 +27,19 @@ export const loadProductsThunks = async (dispatch: AppDispatch) => {
 
   dispatch(loadProductsActions(jsonRespone.products));
 };
+
+export const loadProductThunks =
+  (id: string) => async (dispatch: AppDispatch) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${id}`
+    );
+
+    const product: Producto = await response.json();
+
+    if (response.ok) {
+      dispatch(loadProductAction(product));
+    }
+  };
 
 export const loadProductsUserThunks = async (dispatch: AppDispatch) => {
   const response = await fetch(
