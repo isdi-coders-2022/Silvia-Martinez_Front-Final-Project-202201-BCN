@@ -17,10 +17,6 @@ const productsReducers = (
       newProducts = [...action.products];
       break;
 
-    case actionTypes.loadUserProducts:
-      newProducts = [...action.products];
-      break;
-
     case actionTypes.deleteProduct:
       newProducts = currentProducts.filter(
         (product) => product._id !== action.id
