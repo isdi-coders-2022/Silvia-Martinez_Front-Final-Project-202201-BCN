@@ -22,6 +22,7 @@ const DetailPage = (): JSX.Element => {
   return (
     <>
       <DisplayCard>
+        <h2>Mira este producto</h2>
         <CardDetail product={product} />
       </DisplayCard>
     </>

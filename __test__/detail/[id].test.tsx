@@ -6,11 +6,7 @@ import { Producto } from "../../types/Producto";
 
 describe("Given a detial page", () => {
   describe("When it is invoked", () => {
-    test("It should render a heart icon", () => {
-      const WrappedComponent = wrapper.withRedux(DetailPage);
-      render(<WrappedComponent />);
-    });
-    /* test("It should render prodcut price: ' Mira esta producto'", () => {
+    test("It should render prodcut price: ' Mira esta producto'", () => {
       const WrappedComponent = wrapper.withRedux(DetailPage);
       render(<WrappedComponent />);
 
@@ -19,6 +15,6 @@ describe("Given a detial page", () => {
       });
 
       expect(text).toBeInTheDocument();
-    }); */
+    });
   });
 });
