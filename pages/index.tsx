@@ -1,18 +1,26 @@
 import type { NextPage } from "next";
 import { useSelector } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
+import Categorias from "../components/Categorias/Categorias";
 import Loading from "../components/Loading/Loading";
 import ProductList from "../components/ProdcutList/ProductList";
 import { RootState, wrapper } from "../redux/store";
 import { loadProductsThunks } from "../redux/thunks/thunks";
 
+const DisplayHome: StyledComponent<"div", {}> = styled.div`
+  position: relative;
+  top: 99px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+`;
 const Title: StyledComponent<"h2", {}> = styled.h2`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  margin: 20px;
   position: relative;
-  top: 95px;
+  top: 100px;
+  margin: 20px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 `;
 
@@ -23,8 +31,11 @@ const Home: NextPage = (): JSX.Element => {
   }
   return (
     <>
-      <Title>Cerca de ti</Title>
-      <ProductList products={products} />
+      <DisplayHome>
+        <Categorias />
+        <Title>Cerca de ti</Title>
+        <ProductList products={products} />
+      </DisplayHome>
     </>
   );
 };
