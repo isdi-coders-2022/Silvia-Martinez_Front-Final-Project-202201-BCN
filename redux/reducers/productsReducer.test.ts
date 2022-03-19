@@ -13,6 +13,14 @@ describe("Given productReducers", () => {
           description: "silla bonita",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
         {
           _id: "4456",
@@ -21,6 +29,14 @@ describe("Given productReducers", () => {
           description: "silla bonita",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
       ];
       const currentProducts: Producto[] = [];
@@ -35,38 +51,6 @@ describe("Given productReducers", () => {
     });
   });
 
-  describe("When given a current obejct and action", () => {
-    test("Then should return a  with current objects and actions", () => {
-      const products: Producto[] = [
-        {
-          _id: "1234",
-          price: "10",
-          title: "silla",
-          description: "silla bonita",
-          category: "mueble",
-          picture: "unafoto.jpg",
-        },
-        {
-          _id: "4456",
-          price: "10",
-          title: "silla",
-          description: "silla bonita",
-          category: "mueble",
-          picture: "unafoto.jpg",
-        },
-      ];
-      const currentProducts: Producto[] = [];
-      const action = {
-        type: actionTypes.loadUserProducts,
-        products,
-      };
-
-      const newUserProducts = productsReducers(currentProducts, action);
-
-      expect(newUserProducts).toStrictEqual(products);
-    });
-  });
-
   describe("When given a currentProduct and a action that is not in actionCreators", () => {
     test("Then should return the current list because its using default statement", () => {
       const currentProducts: Producto[] = [
@@ -77,6 +61,14 @@ describe("Given productReducers", () => {
           description: "silla bonita",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
       ];
       const action = { type: "not-work" };
@@ -105,6 +97,14 @@ describe("Given productReducers", () => {
           description: "silla bonita",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
         {
           _id: "1235",
@@ -113,6 +113,14 @@ describe("Given productReducers", () => {
           description: "taburete feo",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
       ];
 
@@ -124,6 +132,14 @@ describe("Given productReducers", () => {
           description: "taburete feo",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
       ];
 
@@ -147,6 +163,14 @@ describe("Given productReducers", () => {
           description: "silla bonita",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
       ];
       const product: Producto[] = [
@@ -157,6 +181,14 @@ describe("Given productReducers", () => {
           description: "taburete feo",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
       ];
 
@@ -180,6 +212,14 @@ describe("Given productReducers", () => {
           description: "silla bonita",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
         },
       ];
 
@@ -190,6 +230,14 @@ describe("Given productReducers", () => {
         description: "silla fea",
         category: "mueble",
         picture: "unafoto.jpg",
+        userID: {
+          username: "",
+          name: "Pepe",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
       };
 
       const action = {

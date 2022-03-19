@@ -54,7 +54,7 @@ const DisplayPerfil: StyledComponent<"div", {}> = styled.div`
 
 const Perfil = (): JSX.Element => {
   const products: Producto[] = useSelector(
-    (state: RootState) => state.products
+    (state: RootState) => state.productsUser
   );
   const user: User = useSelector((state: RootState) => state.user);
 

@@ -12,9 +12,9 @@ export const loadProductAction = (product: Producto) => ({
   product,
 });
 
-export const loadProductsUserActions = (products: Producto[]) => ({
+export const loadProductsUserActions = (productsUser: Producto[]) => ({
   type: actionTypes.loadUserProducts,
-  products,
+  productsUser,
 });
 
 export const deleteProductActions = (id: string) => ({
