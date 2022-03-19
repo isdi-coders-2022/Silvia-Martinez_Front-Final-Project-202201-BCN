@@ -4,7 +4,7 @@ import { Producto } from "../../types/Producto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-const Card: StyledComponent<"article", {}> = styled.article`
+const Card: StyledComponent<"li", {}> = styled.li`
   position: relative;
   top: 100px;
   display: flex;
@@ -41,7 +41,7 @@ const CardHead: StyledComponent<"section", {}> = styled.section`
     cursor: pointer;
   }
 `;
-const CardDescription: StyledComponent<"li", {}> = styled.li`
+const CardDescription: StyledComponent<"article", {}> = styled.article`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -83,7 +83,6 @@ const Map: StyledComponent<"div", {}> = styled.div`
   height: 200px;
   border-radius: 0px 0px 13px 13px;
   z-index: 99;
-  background-color: blueviolet;
   bottom: 0;
 
   @media (max-width: 500px) {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import styled, { StyledComponent } from "styled-components";
 import { Producto } from "../../types/Producto";
 
-const Card: StyledComponent<"article", {}> = styled.article`
+const Card: StyledComponent<"li", {}> = styled.li`
   display: flex;
   flex-direction: column;
   width: 217px;
@@ -37,7 +37,7 @@ const CardImage = styled(Image)`
   }
 `;
 
-const CardDescription: StyledComponent<"li", {}> = styled.li`
+const CardDescription: StyledComponent<"article", {}> = styled.article`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
