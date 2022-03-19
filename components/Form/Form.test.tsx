@@ -62,6 +62,14 @@ describe("Given a Form component", () => {
         picture: "",
         price: "",
         title: "Silla",
+        userID: {
+          username: "",
+          name: "",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
       };
       userEvent.type(screen.getByRole("textbox", { name: "Producto:" }), title);
       userEvent.type(

@@ -1,8 +1,10 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter } from "next/router";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import { useSelector } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
 import CardDetail from "../../components/CardDetail/CardDetail";
 import Loading from "../../components/Loading/Loading";
+import { RootState, wrapper } from "../../redux/store";
+import { loadProductThunks } from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
 
 const DisplayCard: StyledComponent<"div", {}> = styled.div`
@@ -11,11 +13,9 @@ const DisplayCard: StyledComponent<"div", {}> = styled.div`
   align-items: center;
 `;
 
-interface DetailProductProps {
-  product: Producto;
-}
+const DetailPage = (): JSX.Element => {
+  const product: Producto = useSelector((state: RootState) => state.product);
 
-const DetailPage = ({ product }: DetailProductProps): JSX.Element => {
   if (!product) {
     return <Loading />;
   }
@@ -28,28 +28,38 @@ const DetailPage = ({ product }: DetailProductProps): JSX.Element => {
   );
 };
 
+export const getProductsId = async (context?: GetStaticPropsContext) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_WALLAPLOP}products/list`
+  );
+  const productsID = await response.json();
+  const productos = productsID.products;
+
+  return productos.map((product: Producto) => {
+    return {
+      params: {
+        id: product._id,
+      },
+    };
+  });
+};
+
 export const getStaticPaths: GetStaticPaths = async () => {
+  const id = await getProductsId();
   return {
-    paths: [],
+    paths: id,
     fallback: true,
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_WALLAPLOP}products/list`
-  );
-  const responseBody = await response.json();
-  const product: Producto[] = responseBody.products.find(
-    (responseProduct: Producto) => {
-      return responseProduct._id === params?.id;
-    }
-  );
-
-  return {
-    props: { product },
-    revalidate: 60,
-  };
-};
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
+  (store) => async (context) => {
+    const id = context.params?.id;
+    await store.dispatch<any>(loadProductThunks(id as string));
+    return {
+      props: { id },
+    };
+  }
+);
 
 export default DetailPage;

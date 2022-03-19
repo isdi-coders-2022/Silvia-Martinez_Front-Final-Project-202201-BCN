@@ -33,7 +33,8 @@ const CardHead: StyledComponent<"section", {}> = styled.section`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 0px 20px 0px 20px;
 
   svg:hover {
     color: #fd9cca;
@@ -100,7 +101,7 @@ const CardDetail = ({ product }: CardDetailProps): JSX.Element => {
     <>
       <Card>
         <CardHead>
-          <p>Nombre Usuario</p>
+          <p>Nombre</p>
           <FontAwesomeIcon icon={faHeart} title={"like-icon"} />
         </CardHead>
         <CardImage
