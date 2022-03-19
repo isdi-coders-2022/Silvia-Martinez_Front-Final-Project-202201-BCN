@@ -10,7 +10,7 @@ describe("Given a detial page", () => {
       const WrappedComponent = wrapper.withRedux(DetailPage);
       render(<WrappedComponent />);
 
-      const text = screen.queryByRole("img", { name: "like-icon" });
+      const text = screen.getByRole("img", { name: "like-icon" });
 
       expect(text).toBeInTheDocument();
     });
@@ -18,7 +18,7 @@ describe("Given a detial page", () => {
       const WrappedComponent = wrapper.withRedux(DetailPage);
       render(<WrappedComponent />);
 
-      const text = screen.queryByRole("heading", {
+      const text = screen.getByRole("heading", {
         name: "Mira este producto",
       });
 
