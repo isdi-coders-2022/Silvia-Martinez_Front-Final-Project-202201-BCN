@@ -10,15 +10,15 @@ describe("Given a detial page", () => {
       const WrappedComponent = wrapper.withRedux(DetailPage);
       render(<WrappedComponent />);
 
-      const text = screen.getByTitle("like-icon");
+      const text = screen.getByRole("img", { name: "like-icon" });
 
       expect(text).toBeInTheDocument();
     });
-    test("It should render prodcut price: ' €'", () => {
+    test("It should render prodcut price: ' Mira esta producto'", () => {
       const WrappedComponent = wrapper.withRedux(DetailPage);
       render(<WrappedComponent />);
 
-      const text = screen.getByRole("heading", { name: "€" });
+      const text = screen.getByRole("heading", { name: "Mira este producto" });
 
       expect(text).toBeInTheDocument();
     });
