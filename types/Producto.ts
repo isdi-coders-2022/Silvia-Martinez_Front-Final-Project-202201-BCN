@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export interface Producto {
   _id: string;
   price: string;
@@ -5,4 +7,5 @@ export interface Producto {
   description: string;
   category: string;
   picture: string;
+  userID: User;
 }
