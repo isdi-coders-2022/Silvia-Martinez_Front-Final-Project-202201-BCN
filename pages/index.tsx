@@ -18,10 +18,12 @@ const Title: StyledComponent<"h2", {}> = styled.h2`
 
 const Home: NextPage = (): JSX.Element => {
   const products = useSelector((state: RootState) => state.products);
+  if (!products) {
+    return <Loading />;
+  }
   return (
     <>
       <Title>Cerca de ti</Title>
-      {!products && <Loading />}
       <ProductList products={products} />
     </>
   );
