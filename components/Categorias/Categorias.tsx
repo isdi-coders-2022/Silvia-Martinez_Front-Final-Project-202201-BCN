@@ -61,7 +61,7 @@ const Categorias = () => {
       <CategoriasStyled>
         <List>
           <ListItem>
-            <Link href={"/"}>
+            <Link href={"/category/Cocina"}>
               <a>
                 <FontAwesomeIcon icon={faUtensils} />
                 <p>Cocina</p>
@@ -69,7 +69,7 @@ const Categorias = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href={"/"}>
+            <Link href={"/category/deportes"}>
               <a>
                 <FontAwesomeIcon icon={faBasketballBall} />
                 <p>Deportes</p>
@@ -77,7 +77,7 @@ const Categorias = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href={"/"}>
+            <Link href={"/category/electrodomesticos"}>
               <a>
                 <FontAwesomeIcon icon={faTv} />
                 <p>Electrodomesticos</p>
@@ -85,7 +85,7 @@ const Categorias = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href={"/"}>
+            <Link href={"/category/hogar"}>
               <a>
                 <FontAwesomeIcon icon={faCouch} />
                 <p>Hogar</p>
@@ -93,7 +93,7 @@ const Categorias = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href={"/"}>
+            <Link href={"/category/moda"}>
               <a>
                 <FontAwesomeIcon icon={faShirt} />
                 <p>Moda</p>
@@ -101,7 +101,7 @@ const Categorias = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href={"/"}>
+            <Link href={"/category/motor"}>
               <a>
                 <FontAwesomeIcon icon={faCar} />
                 <p>Motor</p>
@@ -109,7 +109,7 @@ const Categorias = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href={"/"}>
+            <Link href={"/category/videojuegos"}>
               <a>
                 <FontAwesomeIcon icon={faGamepad} />
                 <p>Videojuegos</p>
