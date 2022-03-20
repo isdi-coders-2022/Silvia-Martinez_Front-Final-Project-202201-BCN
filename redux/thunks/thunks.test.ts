@@ -3,6 +3,8 @@ import {
   deleteProductThunks,
   loadProductsThunks,
   loadProductsUserThunks,
+  loadProductThunks,
+  LoadUserThunks,
   loginUserThunks,
   registerUserThunks,
   updateProductThunk,
@@ -25,6 +27,22 @@ describe("Given a load thunk function", () => {
       const dispatch = jest.fn();
 
       await loadProductsThunks(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a loadProduct thunk function", () => {
+  describe("When it's invoked", () => {
+    test("then it should call a dispatch", async () => {
+      const dispatch = jest.fn();
+
+      const id = "33";
+
+      const loadProduct = loadProductThunks(id);
+
+      await loadProduct(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
@@ -70,6 +88,14 @@ describe("Given a createProduct thunk function", () => {
         description: "silla bonita",
         picture: "unafoto.jpg",
         category: "mueble",
+        userID: {
+          username: "",
+          name: "Pepe",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
       };
 
       const createThunk = createProductThunk(product);
@@ -93,6 +119,14 @@ describe("Given a updateProduct thunk function", () => {
         description: "silla bonita",
         picture: "unafoto.jpg",
         category: "mueble",
+        userID: {
+          username: "",
+          name: "Pepe",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
       };
 
       const updateThunk = updateProductThunk(product);
@@ -144,6 +178,18 @@ describe("Given a login user thunk", () => {
       const loginThunk = loginUserThunks(user);
 
       await loginThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a loadUSer thunk function", () => {
+  describe("When it's invoked", () => {
+    test("then it should call a dispatch", async () => {
+      const dispatch = jest.fn();
+
+      await LoadUserThunks(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
