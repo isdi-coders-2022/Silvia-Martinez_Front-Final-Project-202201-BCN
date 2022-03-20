@@ -68,7 +68,7 @@ const Form = ({ product }: FormProps): JSX.Element => {
         title: "",
         description: "",
         price: "",
-        category: "",
+        category: "cocina",
         picture: "",
         userID: {
           name: "",
