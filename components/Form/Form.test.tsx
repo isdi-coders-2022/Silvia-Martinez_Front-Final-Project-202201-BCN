@@ -57,11 +57,12 @@ describe("Given a Form component", () => {
     test("Then it should call a dispatch action with the product", () => {
       renderWithProviders(<Form />);
       const title = "Silla";
-      const category = "muebles";
+      const category = "hogar";
       const description = "silla de madera";
+
       const product: Producto = {
         _id: "",
-        category: "muebles",
+        category: "hogar",
         description: "silla de madera",
         picture: "",
         price: "",
@@ -75,15 +76,17 @@ describe("Given a Form component", () => {
           email: "",
         },
       };
+
       userEvent.type(screen.getByRole("textbox", { name: "Producto:" }), title);
       userEvent.type(
         screen.getByRole("textbox", { name: "Descripcion:" }),
         description
       );
-      userEvent.type(
-        screen.getByRole("textbox", { name: "Categoria:" }),
+      userEvent.selectOptions(
+        screen.getByRole("combobox", { name: "Categoria:" }),
         category
       );
+
       userEvent.click(screen.getByRole("button"));
 
       expect(mockDispatch).toHaveBeenCalled();
@@ -94,7 +97,7 @@ describe("Given a Form component", () => {
     test("Then it should call a dispatch action with the product", () => {
       const productUpdate: Producto = {
         _id: "",
-        category: "muebles",
+        category: "hogar",
         description: "silla de madera",
         picture: "",
         price: "",
