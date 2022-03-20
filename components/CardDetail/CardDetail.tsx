@@ -1,12 +1,12 @@
 import Image from "next/image";
 import styled, { StyledComponent } from "styled-components";
-import { Producto } from "../../types/Producto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 const Card: StyledComponent<"li", {}> = styled.li`
   position: relative;
-  top: 100px;
+  top: 150px;
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -14,6 +14,8 @@ const Card: StyledComponent<"li", {}> = styled.li`
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   margin: 5px;
 
   @media (max-width: 500px) {
@@ -92,7 +94,7 @@ const Map: StyledComponent<"div", {}> = styled.div`
 `;
 
 interface CardDetailProps {
-  product: Producto;
+  product: ProductoLocation;
 }
 
 const CardDetail = ({ product }: CardDetailProps): JSX.Element => {
@@ -100,7 +102,7 @@ const CardDetail = ({ product }: CardDetailProps): JSX.Element => {
     <>
       <Card>
         <CardHead>
-          <p>Nombre</p>
+          {!product ? "" : <p>User: {product.userID.username}</p>}
           <FontAwesomeIcon icon={faHeart} title={"like-icon"} />
         </CardHead>
         <CardImage

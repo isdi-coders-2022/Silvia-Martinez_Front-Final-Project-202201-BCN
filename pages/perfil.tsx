@@ -44,12 +44,30 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   flex-wrap: wrap;
   margin: 0px;
   padding: 0px;
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const DisplayPerfil: StyledComponent<"div", {}> = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  @media (max-width: 1070px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Perfil = (): JSX.Element => {

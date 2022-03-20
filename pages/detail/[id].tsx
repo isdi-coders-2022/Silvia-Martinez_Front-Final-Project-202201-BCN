@@ -6,6 +6,7 @@ import Loading from "../../components/Loading/Loading";
 import { RootState, wrapper } from "../../redux/store";
 import { loadProductThunks } from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 const DisplayCard: StyledComponent<"div", {}> = styled.div`
   display: flex;
@@ -14,7 +15,9 @@ const DisplayCard: StyledComponent<"div", {}> = styled.div`
 `;
 
 const DetailPage = (): JSX.Element => {
-  const product: Producto = useSelector((state: RootState) => state.product);
+  const product: ProductoLocation = useSelector(
+    (state: RootState) => state.product
+  );
 
   if (!product) {
     return <Loading />;

@@ -12,6 +12,8 @@ const Card: StyledComponent<"li", {}> = styled.li`
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   margin: 20px;
   :hover {
     border: 1px solid #fd9cca;
@@ -19,6 +21,7 @@ const Card: StyledComponent<"li", {}> = styled.li`
   @media (max-width: 500px) {
     display: flex;
     flex-direction: column;
+
     height: 500px;
     width: 200px;
   }

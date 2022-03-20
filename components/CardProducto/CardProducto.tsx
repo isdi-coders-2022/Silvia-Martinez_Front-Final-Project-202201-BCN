@@ -11,9 +11,11 @@ const Card: StyledComponent<"li", {}> = styled.li`
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
-  margin: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  margin: 15px;
   :hover {
-    border: 1px solid #fd9cca;
+    border: 2px solid #fd9cca;
     cursor: pointer;
   }
   @media (max-width: 500px) {
@@ -26,8 +28,8 @@ const CardImage = styled(Image)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 215px;
-  height: 216px;
+  width: 200px;
+  height: 200px;
   border-radius: 13px 13px 0px 0px;
   z-index: 99;
 
@@ -84,8 +86,8 @@ const CardProducto = ({ product }: CardProductoProps): JSX.Element => {
             <CardImage
               src={product.picture}
               alt={product.title}
-              width={215}
-              height={215}
+              width={200}
+              height={200}
               layout="responsive"
               objectFit="cover"
             ></CardImage>

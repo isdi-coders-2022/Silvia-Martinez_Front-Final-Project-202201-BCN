@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CardDetail from "./CardDetail";
-import { Producto } from "../../types/Producto";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 describe("Given a CardDetail Component", () => {
   describe("When it's invoked", () => {
     test("Then it should render with heading", () => {
-      const product: Producto = {
+      const product: ProductoLocation = {
         _id: "1234",
         price: "10",
         title: "silla",
@@ -14,13 +14,14 @@ describe("Given a CardDetail Component", () => {
         category: "mueble",
         picture: "image.jpg",
         userID: {
-          username: "",
-          name: "Pepe",
+          username: "Pepe",
+          name: "",
           picture: "",
           _id: "",
           password: "",
           email: "",
         },
+        location: { lat: "", long: "" },
       };
 
       render(<CardDetail product={product} />);
@@ -30,7 +31,7 @@ describe("Given a CardDetail Component", () => {
       expect(text).toBeInTheDocument();
     });
     test("Then it should render with heading", () => {
-      const product = {
+      const product: ProductoLocation = {
         _id: "1234",
         price: "10",
         title: "silla",
@@ -38,13 +39,14 @@ describe("Given a CardDetail Component", () => {
         category: "mueble",
         picture: "image.jpg",
         userID: {
-          username: "",
-          name: "Pepe",
+          username: "Pepe",
+          name: "",
           picture: "",
           _id: "",
           password: "",
           email: "",
         },
+        location: { lat: "", long: "" },
       };
 
       const icon = "like-icon";
