@@ -1,8 +1,26 @@
 import { Producto } from "../../types/Producto";
 import actionTypes from "../actions/actionTypes";
 import { HYDRATE } from "next-redux-wrapper";
+import { AnyAction } from "redux";
 
-const productReducer = (product: any = {}, action: any = {}) => {
+const initProduct = {
+  _id: "",
+  price: "",
+  title: "",
+  description: "",
+  category: "",
+  picture: "",
+  userID: {
+    username: "",
+    name: "",
+    picture: "",
+    _id: "",
+    password: "",
+    email: "",
+  },
+};
+
+const productReducer = (product: Producto = initProduct, action: AnyAction) => {
   let newProduct: Producto;
   switch (action.type) {
     case HYDRATE:
