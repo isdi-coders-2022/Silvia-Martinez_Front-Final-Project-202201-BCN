@@ -3,7 +3,10 @@ import { screen } from "@testing-library/react";
 import renderWithProviders from "../../jest.setup";
 import userEvent from "@testing-library/user-event";
 import { Producto } from "../../types/Producto";
-import { createProductThunk } from "../../redux/thunks/thunks";
+import {
+  createProductThunk,
+  updateProductThunk,
+} from "../../redux/thunks/thunks";
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
@@ -12,6 +15,7 @@ jest.mock("react-redux", () => ({
 
 jest.mock("../../redux/thunks/thunks", () => ({
   createProductThunk: jest.fn(),
+  updateProductThunk: jest.fn(),
 }));
 
 describe("Given a Form component", () => {
@@ -38,7 +42,7 @@ describe("Given a Form component", () => {
       expect(nameInput).toBeInTheDocument();
     });
   });
-  describe("When it types in the title input", () => {
+  describe("When are creating and it types in the title input", () => {
     test("Then it should type the product 'Silla'", () => {
       renderWithProviders(<Form />);
 
@@ -84,6 +88,32 @@ describe("Given a Form component", () => {
 
       expect(mockDispatch).toHaveBeenCalled();
       expect(createProductThunk).toBeCalledWith(product);
+    });
+  });
+  describe("When are updating the product and it types in the title input", () => {
+    test("Then it should call a dispatch action with the product", () => {
+      const productUpdate: Producto = {
+        _id: "",
+        category: "muebles",
+        description: "silla de madera",
+        picture: "",
+        price: "",
+        title: "Silla",
+        userID: {
+          username: "",
+          name: "",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
+      };
+      renderWithProviders(<Form product={productUpdate} />);
+
+      userEvent.click(screen.getByRole("button"));
+
+      expect(mockDispatch).toHaveBeenCalled();
+      expect(updateProductThunk).toBeCalledWith(productUpdate);
     });
   });
 });
