@@ -269,6 +269,22 @@ describe("Given productReducers", () => {
             email: "",
           },
         },
+        {
+          _id: "1235",
+          price: "10",
+          title: "silla",
+          description: "silla bonita",
+          category: "mueble",
+          picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
+        },
       ];
 
       const product: Producto = {
@@ -295,7 +311,7 @@ describe("Given productReducers", () => {
 
       const updatedProducts = productsReducers(currentProducts, action);
 
-      expect(updatedProducts.length).toBe(1);
+      expect(updatedProducts.length).toBe(2);
     });
   });
 });
