@@ -53,6 +53,11 @@ const ListItem: StyledComponent<"li", {}> = styled.li`
 `;
 
 export const Navigation = (): JSX.Element => {
+  let isToken = true;
+  if (!localStorage.getItem("token")) {
+    isToken = false;
+  }
+
   return (
     <NavList>
       <Link href={"/"}>
@@ -72,12 +77,22 @@ export const Navigation = (): JSX.Element => {
           </Link>
         </ListItem>
         <ListItem>
-          <Link href={"/perfil"}>
-            <a>
-              <FontAwesomeIcon icon={faUser} />
-              <p>Perfil</p>
-            </a>
-          </Link>
+          {isToken && (
+            <Link href={"/perfil"}>
+              <a>
+                <FontAwesomeIcon icon={faUser} />
+                <p>Perfil</p>
+              </a>
+            </Link>
+          )}
+          {!isToken && (
+            <Link href={"/login"}>
+              <a>
+                <FontAwesomeIcon icon={faUser} />
+                <p>Perfil</p>
+              </a>
+            </Link>
+          )}
         </ListItem>
       </List>
     </NavList>
