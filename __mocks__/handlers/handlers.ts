@@ -6,15 +6,17 @@ export const handlers = [
     (req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json([
-          {
-            _id: "123",
-            price: 10,
-            title: "silla",
-            description: "silla bonita",
-            category: "mueble",
-          },
-        ])
+        ctx.json({
+          products: [
+            {
+              _id: "123",
+              price: 10,
+              title: "silla",
+              description: "silla bonita",
+              category: "mueble",
+            },
+          ],
+        })
       );
     }
   ),
@@ -26,6 +28,13 @@ export const handlers = [
         ctx.json([
           {
             _id: "123",
+            price: 10,
+            title: "silla",
+            description: "silla bonita",
+            category: "mueble",
+          },
+          {
+            _id: "124",
             price: 10,
             title: "silla",
             description: "silla bonita",
