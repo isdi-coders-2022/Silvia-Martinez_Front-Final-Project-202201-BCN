@@ -53,9 +53,9 @@ const ListItem: StyledComponent<"li", {}> = styled.li`
 `;
 
 export const Navigation = (): JSX.Element => {
-  let isToken = true;
-  if (!localStorage.getItem("token")) {
-    isToken = false;
+  let isToken = false;
+  if (typeof localStorage !== "undefined") {
+    isToken = !!localStorage.getItem("token");
   }
 
   return (
