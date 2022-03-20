@@ -13,17 +13,23 @@ describe("Given an edit form page", () => {
         picture: "unafoto.jpg",
         price: "14",
         title: "Silla",
+        userID: {
+          username: "",
+          name: "Pepe",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
       };
 
       renderWithProviders(<EditProduct product={producto} />);
 
       const inputDescription = screen.getByDisplayValue(producto.description);
-      const inputCategory = screen.getByDisplayValue(producto.category);
       const inputPrice = screen.getByDisplayValue(producto.price);
       const inputTitle = screen.getByDisplayValue(producto.title);
 
       expect(inputDescription).toBeInTheDocument();
-      expect(inputCategory).toBeInTheDocument();
       expect(inputPrice).toBeInTheDocument();
       expect(inputTitle).toBeInTheDocument();
     });
