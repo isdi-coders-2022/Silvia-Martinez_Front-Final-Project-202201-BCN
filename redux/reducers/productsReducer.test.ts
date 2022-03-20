@@ -1,3 +1,4 @@
+import { HYDRATE } from "next-redux-wrapper";
 import { Producto } from "../../types/Producto";
 import actionTypes from "../actions/actionTypes";
 import productsReducers from "./productsReducers";
@@ -48,6 +49,53 @@ describe("Given productReducers", () => {
       const newProdcuts = productsReducers(currentProducts, action);
 
       expect(newProdcuts).toStrictEqual(products);
+    });
+  });
+  describe("When called HYDRATE case", () => {
+    test("Then should return the elements passed by HYDRATE payload", () => {
+      const products: Producto[] = [
+        {
+          _id: "1234",
+          price: "10",
+          title: "silla",
+          description: "silla bonita",
+          category: "mueble",
+          picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
+        },
+        {
+          _id: "1234",
+          price: "10",
+          title: "silla",
+          description: "silla bonita",
+          category: "mueble",
+          picture: "unafoto.jpg",
+          userID: {
+            username: "",
+            name: "Pepe",
+            picture: "",
+            _id: "",
+            password: "",
+            email: "",
+          },
+        },
+      ];
+
+      const action = {
+        type: HYDRATE,
+        payload: { products: products },
+      };
+
+      const newProduct = productsReducers([], action);
+
+      expect(newProduct).toEqual(products);
     });
   });
 
