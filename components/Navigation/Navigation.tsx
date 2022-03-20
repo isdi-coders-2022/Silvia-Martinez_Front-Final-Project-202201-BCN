@@ -4,6 +4,7 @@ import styled, { StyledComponent } from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import logo from ".//../../public/wallaplop.jpg";
+import { useEffect, useState } from "react";
 
 const NavList: StyledComponent<"div", {}> = styled.div`
   display: flex;
@@ -53,10 +54,11 @@ const ListItem: StyledComponent<"li", {}> = styled.li`
 `;
 
 export const Navigation = (): JSX.Element => {
-  let isToken = false;
-  if (typeof localStorage !== "undefined") {
-    isToken = !!localStorage.getItem("token");
-  }
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(!!localStorage.getItem("token"));
+  }, []);
 
   return (
     <NavList>
@@ -77,7 +79,7 @@ export const Navigation = (): JSX.Element => {
           </Link>
         </ListItem>
         <ListItem>
-          {isToken && (
+          {isLoggedIn && (
             <Link href={"/perfil"}>
               <a>
                 <FontAwesomeIcon icon={faUser} />
@@ -85,7 +87,7 @@ export const Navigation = (): JSX.Element => {
               </a>
             </Link>
           )}
-          {!isToken && (
+          {!isLoggedIn && (
             <Link href={"/login"}>
               <a>
                 <FontAwesomeIcon icon={faUser} />
