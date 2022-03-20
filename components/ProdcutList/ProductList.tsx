@@ -6,7 +6,7 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   top: 110px;
   flex-wrap: wrap;
