@@ -130,10 +130,13 @@ const Form = ({ product }: FormProps): JSX.Element => {
               placeholder="Nombre del Producto"
               onChange={changeData}
               value={formData.title}
+              maxLength={50}
+              minLength={1}
             />
           </FormBlock>
           <FormBlock className="form-block">
             <label htmlFor="description">Descripcion:</label>
+
             <StyledInput
               autoComplete="off"
               type="text"
@@ -141,6 +144,8 @@ const Form = ({ product }: FormProps): JSX.Element => {
               placeholder="Descripcion del producto"
               onChange={changeData}
               value={formData.description}
+              maxLength={50}
+              minLength={1}
             />
           </FormBlock>
           <FormBlock className="form-block">
@@ -157,14 +162,20 @@ const Form = ({ product }: FormProps): JSX.Element => {
           </FormBlock>
           <FormBlock className="form-block">
             <label htmlFor="category">Categoria:</label>
-            <StyledInput
-              autoComplete="off"
-              type="text"
+            <select
               id="category"
-              placeholder="Categoria"
-              onChange={changeData}
               value={formData.category}
-            />
+              onChange={changeData}
+              required
+            >
+              <option value="cocina">Cocina</option>
+              <option value="deportes">Deportes</option>
+              <option value="electrodomesticos">Electrodomesticos</option>
+              <option value="hogar">Hogar</option>
+              <option value="moda">Moda</option>
+              <option value="motor">Motor</option>
+              <option value="videojuegos">videojuegos</option>
+            </select>
           </FormBlock>
           {isEditing ? (
             ""
