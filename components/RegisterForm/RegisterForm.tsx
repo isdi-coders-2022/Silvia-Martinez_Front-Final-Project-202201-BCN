@@ -96,6 +96,9 @@ const RegisterForm = () => {
             placeholder="Pon tu nombre 🐨"
             onChange={changeData}
             value={formData.name}
+            maxLength={50}
+            minLength={1}
+            required
           />
         </FormBlock>
         <FormBlock className="form-block">
@@ -107,6 +110,9 @@ const RegisterForm = () => {
             placeholder="Inventate un nombre de usuario🦄"
             onChange={changeData}
             value={formData.username}
+            maxLength={50}
+            minLength={1}
+            required
           />
         </FormBlock>
         <FormBlock className="form-block">
@@ -118,17 +124,22 @@ const RegisterForm = () => {
             placeholder="password 🙈"
             onChange={changeData}
             value={formData.password}
+            maxLength={50}
+            minLength={1}
+            required
           />
         </FormBlock>
         <FormBlock className="form-block">
           <label htmlFor="email">Email: </label>
           <StyledInput
             autoComplete="off"
-            type="text"
+            type="email"
             id="email"
             placeholder="email"
             onChange={changeData}
             value={formData.email}
+            maxLength={50}
+            minLength={1}
           />
         </FormBlock>
         <FormBlock className="form-block">
