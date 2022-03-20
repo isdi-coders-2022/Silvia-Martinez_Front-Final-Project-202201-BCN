@@ -2,10 +2,10 @@ import type { NextPage } from "next";
 import { useSelector } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
 import Categorias from "../components/Categorias/Categorias";
-import Loading from "../components/Loading/Loading";
 import ProductList from "../components/ProdcutList/ProductList";
 import { RootState, wrapper } from "../redux/store";
 import { loadProductsThunks } from "../redux/thunks/thunks";
+import { Producto } from "../types/Producto";
 
 const DisplayHome: StyledComponent<"div", {}> = styled.div`
   position: relative;
@@ -13,6 +13,7 @@ const DisplayHome: StyledComponent<"div", {}> = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-left: 10vh;
 `;
 const Title: StyledComponent<"h2", {}> = styled.h2`
   display: flex;
@@ -26,9 +27,6 @@ const Title: StyledComponent<"h2", {}> = styled.h2`
 
 const Home: NextPage = (): JSX.Element => {
   const products = useSelector((state: RootState) => state.products);
-  if (!products) {
-    return <Loading />;
-  }
   return (
     <>
       <DisplayHome>
