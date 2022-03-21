@@ -6,7 +6,6 @@ import {
   faShirt,
   faTv,
   faUtensils,
-  faVirusCovid,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -24,6 +23,9 @@ const List: StyledComponent<"ul", {}> = styled.ul`
   padding: 0px;
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const ListItem: StyledComponent<"li", {}> = styled.li`
