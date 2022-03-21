@@ -1,12 +1,18 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { useSelector } from "react-redux";
-import { AnyAction } from "redux";
 import styled, { StyledComponent } from "styled-components";
 import CardProducto from "../../components/CardProducto/CardProducto";
-import Loading from "../../components/Loading/Loading";
+import Categorias from "../../components/Categorias/Categorias";
 import { RootState, wrapper } from "../../redux/store";
 import { loadProductsThunks } from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
+
+const DisplayCategoryPage: StyledComponent<"div", {}> = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 100px;
+`;
 
 const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   display: flex;
@@ -30,18 +36,21 @@ const CategoryPage = ({ category }: CategoryPageProps): JSX.Element => {
   );
   return (
     <>
-      <ListProduct>
-        {productos
-          .filter((producto) => producto.category === category)
-          .map((producto) => {
-            return (
-              <CardProducto
-                key={producto._id}
-                product={producto}
-              ></CardProducto>
-            );
-          })}
-      </ListProduct>
+      <DisplayCategoryPage>
+        <Categorias></Categorias>
+        <ListProduct>
+          {productos
+            .filter((producto) => producto.category === category)
+            .map((producto) => {
+              return (
+                <CardProducto
+                  key={producto._id}
+                  product={producto}
+                ></CardProducto>
+              );
+            })}
+        </ListProduct>
+      </DisplayCategoryPage>
     </>
   );
 };
