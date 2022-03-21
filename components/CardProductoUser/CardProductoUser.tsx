@@ -1,7 +1,8 @@
 import Image from "next/image";
 import styled, { StyledComponent } from "styled-components";
-import { Producto } from "../../types/Producto";
+import { ProductoLocation } from "../../types/ProductoLocation";
 import Button from "../Button/Button";
+import { Map } from "../Map/Map";
 
 const Card: StyledComponent<"li", {}> = styled.li`
   display: flex;
@@ -28,8 +29,14 @@ const Card: StyledComponent<"li", {}> = styled.li`
 `;
 
 const ImageDiv = styled.div`
-  height: 200px;
-  width: 200px;
+  height: 185px;
+  width: 225px;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 500px) {
+    height: 180px;
+    width: 200px;
+  }
 `;
 
 const CardImage = styled(Image)`
@@ -46,17 +53,17 @@ const CardImage = styled(Image)`
   }
 `;
 
-const Map: StyledComponent<"div", {}> = styled.div`
+const MapContainer: StyledComponent<"div", {}> = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
-  background-color: rgb(192, 255, 245);
-  width: 160px;
-  height: 185px;
+  width: 200px;
+  height: 188px;
   border-radius: 0px 13px 13px 0px;
 
   @media (max-width: 500px) {
+    bottom: 0;
     border-radius: 0px 0px 13px 13px;
     width: 200px;
     height: 100px;
@@ -112,7 +119,7 @@ const CardButton = styled.div`
 `;
 
 interface CardProductoProps {
-  product: Producto;
+  product: ProductoLocation;
   onClickDelete: () => void;
   onClickUpdate: () => void;
 }
@@ -146,7 +153,9 @@ const CardProductoUser = ({
           <Button text={"Editar"} onClick={onClickUpdate} />
           <Button text={"Borrar"} onClick={onClickDelete} />
         </CardButton>
-        <Map></Map>
+        <MapContainer>
+          <Map adress={product.adress}></Map>
+        </MapContainer>
       </Card>
     </>
   );
