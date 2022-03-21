@@ -3,7 +3,7 @@ import styled, { StyledComponent } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { ProductoLocation } from "../../types/ProductoLocation";
-import { Map, MapDetail } from "../Map/Map";
+import { MapDetail } from "../Map/Map";
 
 const Card: StyledComponent<"li", {}> = styled.li`
   position: relative;

@@ -1,7 +1,5 @@
-import Image, { ImageProps } from "next/image";
-import { AnyAction } from "redux";
+import Image from "next/image";
 import styled, { StyledComponent } from "styled-components";
-import { Producto } from "../../types/Producto";
 import { User } from "../../types/User";
 import Button from "../Button/Button";
 

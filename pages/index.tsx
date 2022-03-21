@@ -5,7 +5,6 @@ import Categorias from "../components/Categorias/Categorias";
 import ProductList from "../components/ProdcutList/ProductList";
 import { RootState, wrapper } from "../redux/store";
 import { loadProductsThunks } from "../redux/thunks/thunks";
-import { Producto } from "../types/Producto";
 
 const DisplayHome: StyledComponent<"div", {}> = styled.div`
   position: relative;

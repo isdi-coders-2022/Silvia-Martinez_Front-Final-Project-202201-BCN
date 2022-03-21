@@ -20,7 +20,10 @@ const initProduct = {
   },
 };
 
-const productReducer = (product: Producto = initProduct, action: AnyAction) => {
+const productReducer = (
+  product: Producto = initProduct,
+  action: AnyAction = { type: "" }
+) => {
   let newProduct: Producto;
   switch (action.type) {
     case HYDRATE:

@@ -12,7 +12,10 @@ const initUser: User = {
   picture: "/wallaplop.jpg",
 };
 
-const userReducers = (currentUser: User = initUser, action: AnyAction) => {
+const userReducers = (
+  currentUser: User = initUser,
+  action: AnyAction = { type: "" }
+) => {
   let newUser: User;
 
   switch (action.type) {
@@ -30,6 +33,7 @@ const userReducers = (currentUser: User = initUser, action: AnyAction) => {
       break;
     case actionTypes.logoutUser:
       newUser = initUser;
+      break;
     default:
       newUser = currentUser;
       break;
