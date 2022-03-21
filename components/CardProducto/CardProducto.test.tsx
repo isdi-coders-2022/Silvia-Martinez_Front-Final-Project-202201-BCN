@@ -12,6 +12,14 @@ describe("Given a CardProducto Component", () => {
         description: "silla bonita",
         category: "mueble",
         picture: "image.jpg",
+        userID: {
+          username: "Pepe",
+          name: "",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
       };
 
       render(<CardProducto product={product} />);
