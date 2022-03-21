@@ -9,6 +9,7 @@ import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 const StyledForm = styled.form`
   background-color: #e5e5e5;
@@ -56,12 +57,12 @@ const StyledInput = styled.input`
 `;
 
 interface FormProps {
-  product?: Producto;
+  product?: ProductoLocation;
 }
 
 const Form = ({ product }: FormProps): JSX.Element => {
   let isEditing: boolean = !!product;
-  let initialFields: Producto = product
+  let initialFields: ProductoLocation = product
     ? product
     : {
         _id: "",
@@ -78,6 +79,7 @@ const Form = ({ product }: FormProps): JSX.Element => {
           password: "",
           picture: "",
         },
+        adress: "",
       };
 
   const dispatch = useDispatch();
@@ -158,6 +160,19 @@ const Form = ({ product }: FormProps): JSX.Element => {
               placeholder="Precio"
               onChange={changeData}
               value={formData.price}
+            />
+          </FormBlock>
+          <FormBlock className="form-block">
+            <label htmlFor="adress">Direccion:</label>
+            <StyledInput
+              autoComplete="off"
+              type="text"
+              id="adress"
+              placeholder="Direccion de venta del producto"
+              onChange={changeData}
+              value={formData.adress}
+              maxLength={100}
+              minLength={1}
             />
           </FormBlock>
           <FormBlock className="form-block">
