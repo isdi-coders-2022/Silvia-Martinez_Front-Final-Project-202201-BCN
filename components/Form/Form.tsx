@@ -5,7 +5,6 @@ import {
   createProductThunk,
   updateProductThunk,
 } from "../../redux/thunks/thunks";
-import { Producto } from "../../types/Producto";
 import Button from "../Button/Button";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
