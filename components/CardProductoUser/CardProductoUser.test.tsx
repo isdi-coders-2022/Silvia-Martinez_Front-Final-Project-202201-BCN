@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CardProductoUser from "./CardProductoUser";
-import { Producto } from "../../types/Producto";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 describe("Given a CardProducto Component", () => {
   describe("When it's invoked", () => {
     test("Then it should render", () => {
-      const product: Producto = {
+      const product: ProductoLocation = {
         _id: "1234",
         price: "14",
         title: "silla",
@@ -21,6 +21,8 @@ describe("Given a CardProducto Component", () => {
           password: "",
           email: "",
         },
+        location: { lat: "", long: "" },
+        adress: "diputacio 37, Barcelona",
       };
 
       const onClickAction = jest.fn();
