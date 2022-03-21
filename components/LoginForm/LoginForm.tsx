@@ -1,5 +1,7 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import styled, { StyledComponent } from "styled-components";
 import { loginUserThunks } from "../../redux/thunks/thunks";
 import { User } from "../../types/User";
@@ -51,6 +53,8 @@ const StyleButtons = styled.div`
 `;
 
 const LoginForm = () => {
+  const router = useRouter();
+
   const initialFields: User = {
     _id: "",
     name: "",
@@ -63,9 +67,14 @@ const LoginForm = () => {
   const [formData, setFormData] = useState(initialFields);
   const dispatch = useDispatch();
 
-  const onFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    dispatch(loginUserThunks(formData));
+  const onFormSubmit = async (event: React.FormEvent) => {
+    try {
+      event.preventDefault();
+      dispatch(loginUserThunks(formData));
+      await router.push("/perfil");
+    } catch (error) {
+      toast("no ha funcionado");
+    }
   };
 
   const changeData = (
