@@ -21,6 +21,7 @@ describe("Given a CardDetail Component", () => {
           password: "",
           email: "",
         },
+        adress: "",
         location: { lat: "", long: "" },
       };
 
@@ -46,6 +47,7 @@ describe("Given a CardDetail Component", () => {
           password: "",
           email: "",
         },
+        adress: "",
         location: { lat: "", long: "" },
       };
 

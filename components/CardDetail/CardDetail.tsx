@@ -3,6 +3,7 @@ import styled, { StyledComponent } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { ProductoLocation } from "../../types/ProductoLocation";
+import { Map } from "../Map/Map";
 
 const Card: StyledComponent<"li", {}> = styled.li`
   position: relative;
@@ -76,7 +77,7 @@ const CardDescription: StyledComponent<"article", {}> = styled.article`
   }
 `;
 
-const Map: StyledComponent<"div", {}> = styled.div`
+const MapContainer: StyledComponent<"div", {}> = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,7 +120,9 @@ const CardDetail = ({ product }: CardDetailProps): JSX.Element => {
           <p>{product.description}</p>
           <p> {product.category}</p>
         </CardDescription>
-        <Map></Map>
+        <MapContainer>
+          <Map width="400" height="200" adress={product.adress}></Map>
+        </MapContainer>
       </Card>
     </>
   );
