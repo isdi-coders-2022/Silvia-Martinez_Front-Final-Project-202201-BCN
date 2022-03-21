@@ -3,7 +3,7 @@ import styled, { StyledComponent } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { ProductoLocation } from "../../types/ProductoLocation";
-import { Map } from "../Map/Map";
+import { Map, MapDetail } from "../Map/Map";
 
 const Card: StyledComponent<"li", {}> = styled.li`
   position: relative;
@@ -20,8 +20,8 @@ const Card: StyledComponent<"li", {}> = styled.li`
   margin: 5px;
 
   @media (max-width: 500px) {
-    height: 300px;
-    width: 200px;
+    height: 500px;
+    width: 250px;
   }
 `;
 const CardImage = styled(Image)`
@@ -80,7 +80,7 @@ const CardDescription: StyledComponent<"article", {}> = styled.article`
 const MapContainer: StyledComponent<"div", {}> = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   width: 400px;
   height: 200px;
@@ -89,8 +89,9 @@ const MapContainer: StyledComponent<"div", {}> = styled.div`
   bottom: 0;
 
   @media (max-width: 500px) {
-    width: 174px;
-    height: 170px;
+    border-radius: 13px;
+    width: 250px;
+    height: 150px;
   }
 `;
 
@@ -121,7 +122,7 @@ const CardDetail = ({ product }: CardDetailProps): JSX.Element => {
           <p> {product.category}</p>
         </CardDescription>
         <MapContainer>
-          <Map width="400" height="200" adress={product.adress}></Map>
+          <MapDetail adress={product.adress}></MapDetail>
         </MapContainer>
       </Card>
     </>
