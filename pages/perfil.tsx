@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import PerfilUser from "../components/PerfilUser/PerfilUser";
 import { User } from "../types/User";
 import { logoutUserActions } from "../redux/actions/actionCreator";
+import { ProductoLocation } from "../types/ProductoLocation";
 
 const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   display: flex;
@@ -71,7 +72,7 @@ const DisplayPerfil: StyledComponent<"div", {}> = styled.div`
 `;
 
 const Perfil = (): JSX.Element => {
-  const products: Producto[] = useSelector(
+  const products: ProductoLocation[] = useSelector(
     (state: RootState) => state.productsUser
   );
   const user: User = useSelector((state: RootState) => state.user);
@@ -109,7 +110,7 @@ const Perfil = (): JSX.Element => {
         <PerfilUser products={products.length} user={user} onClick={logOut} />
         <ListProduct>
           {" "}
-          {products.map((producto: Producto) => (
+          {products.map((producto: ProductoLocation) => (
             <CardProductoUser
               key={producto._id}
               product={producto}
