@@ -1,6 +1,12 @@
 import { render, screen } from "@testing-library/react";
+import { GetStaticPathsContext, GetStaticPropsContext } from "next";
+import { act } from "react-dom/test-utils";
 import renderWithProviders from "../../jest.setup";
-import DetailPage from "../../pages/detail/[id]";
+import DetailPage, {
+  getProductsId,
+  getStaticPaths,
+  getStaticProps,
+} from "../../pages/detail/[id]";
 import { wrapper } from "../../redux/store";
 import { Producto } from "../../types/Producto";
 
@@ -10,7 +16,9 @@ describe("Given a detial page", () => {
       const WrappedComponent = wrapper.withRedux(DetailPage);
       render(<WrappedComponent />);
     });
-    /* test("It should render prodcut price: ' Mira esta producto'", () => {
+  });
+});
+/* test("It should render prodcut price: ' Mira esta producto'", () => {
       const WrappedComponent = wrapper.withRedux(DetailPage);
       render(<WrappedComponent />);
 
@@ -20,5 +28,3 @@ describe("Given a detial page", () => {
 
       expect(text).toBeInTheDocument();
     }); */
-  });
-});

@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { useSelector } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
 import CardDetail from "../../components/CardDetail/CardDetail";
-import Loading from "../../components/Loading/Loading";
 import { RootState, wrapper } from "../../redux/store";
 import { loadProductThunks } from "../../redux/thunks/thunks";
 import { Producto } from "../../types/Producto";
@@ -19,9 +18,6 @@ const DetailPage = (): JSX.Element => {
     (state: RootState) => state.product
   );
 
-  if (!product) {
-    return <Loading />;
-  }
   return (
     <>
       <DisplayCard>
@@ -61,6 +57,7 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
     await store.dispatch<any>(loadProductThunks(id as string));
     return {
       props: { id },
+      revalidate: 60,
     };
   }
 );
