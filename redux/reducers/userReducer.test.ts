@@ -99,7 +99,7 @@ describe("Given userReducers", () => {
     });
   });
   describe("When given a current obejct and  login action", () => {
-    test("Then should return a  with current objects and actions", () => {
+    test("Then should return current objects and actions", () => {
       const user: User = {
         _id: "",
         name: "Pepe",
@@ -123,7 +123,7 @@ describe("Given userReducers", () => {
 
       const newUser = userReducers(currentUser, action);
 
-      expect(newUser).toStrictEqual(user);
+      expect(newUser).toEqual(user);
     });
   });
   describe("When given a current obejct and  load action", () => {
@@ -154,7 +154,7 @@ describe("Given userReducers", () => {
       expect(newUser).toStrictEqual(user);
     });
   });
-  describe("When given a current obejct and  login action", () => {
+  describe("When given a current obejct and  logout action", () => {
     test("Then should return a  with current objects and actions", () => {
       const user: User = {
         _id: "",
@@ -170,7 +170,7 @@ describe("Given userReducers", () => {
         username: "",
         email: "",
         password: "",
-        picture: "",
+        picture: "/wallaplop.jpg",
       };
       const action = {
         type: actionTypes.logoutUser,
@@ -179,7 +179,7 @@ describe("Given userReducers", () => {
 
       const newUser = userReducers(user, action);
 
-      expect(newUser).toStrictEqual(user);
+      expect(newUser).toStrictEqual(initUser);
     });
   });
 });
