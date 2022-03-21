@@ -22,7 +22,6 @@ describe("Given a CardDetail Component", () => {
           email: "",
         },
         adress: "",
-        location: { lat: "", long: "" },
       };
 
       render(<CardDetail product={product} />);
@@ -31,7 +30,7 @@ describe("Given a CardDetail Component", () => {
 
       expect(text).toBeInTheDocument();
     });
-    test("Then it should render with heading", () => {
+    test("Then it should render with icon", () => {
       const product: ProductoLocation = {
         _id: "1234",
         price: "10",
@@ -48,16 +47,15 @@ describe("Given a CardDetail Component", () => {
           email: "",
         },
         adress: "",
-        location: { lat: "", long: "" },
       };
 
-      const icon = "like-icon";
+      const iconLike = "like-icon";
 
       render(<CardDetail product={product} />);
 
-      const text = screen.getByTitle(icon);
+      const icon = screen.getByTitle(iconLike);
 
-      expect(text).toBeInTheDocument();
+      expect(icon).toBeInTheDocument();
     });
   });
 });

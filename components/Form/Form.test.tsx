@@ -7,6 +7,7 @@ import {
   createProductThunk,
   updateProductThunk,
 } from "../../redux/thunks/thunks";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
@@ -59,8 +60,9 @@ describe("Given a Form component", () => {
       const title = "Silla";
       const category = "hogar";
       const description = "silla de madera";
+      const adress = "diputacio 37, Barcelona";
 
-      const product: Producto = {
+      const product: ProductoLocation = {
         _id: "",
         category: "hogar",
         description: "silla de madera",
@@ -75,12 +77,17 @@ describe("Given a Form component", () => {
           password: "",
           email: "",
         },
+        adress: "diputacio 37, Barcelona",
       };
 
       userEvent.type(screen.getByRole("textbox", { name: "Producto:" }), title);
       userEvent.type(
         screen.getByRole("textbox", { name: "Descripcion:" }),
         description
+      );
+      userEvent.type(
+        screen.getByRole("textbox", { name: "Direccion:" }),
+        adress
       );
       userEvent.selectOptions(
         screen.getByRole("combobox", { name: "Categoria:" }),
@@ -95,7 +102,7 @@ describe("Given a Form component", () => {
   });
   describe("When are updating the product and it types in the title input", () => {
     test("Then it should call a dispatch action with the product", () => {
-      const productUpdate: Producto = {
+      const productUpdate: ProductoLocation = {
         _id: "",
         category: "hogar",
         description: "silla de madera",
@@ -110,7 +117,9 @@ describe("Given a Form component", () => {
           password: "",
           email: "",
         },
+        adress: "diputacio, 37, Barcelona",
       };
+
       renderWithProviders(<Form product={productUpdate} />);
 
       userEvent.click(screen.getByRole("button"));

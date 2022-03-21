@@ -1,12 +1,12 @@
 import { screen } from "@testing-library/react";
 import renderWithProviders from "../../jest.setup";
 import EditProduct from "../../pages/edit/[id]";
-import { Producto } from "../../types/Producto";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 describe("Given an edit form page", () => {
   describe("When it is rendered wiht a product data", () => {
     test("Then it should render the product data in the input", () => {
-      const producto: Producto = {
+      const producto: ProductoLocation = {
         _id: "",
         category: "muebles",
         description: "silla de madera",
@@ -21,6 +21,7 @@ describe("Given an edit form page", () => {
           password: "",
           email: "",
         },
+        adress: "",
       };
 
       renderWithProviders(<EditProduct product={producto} />);

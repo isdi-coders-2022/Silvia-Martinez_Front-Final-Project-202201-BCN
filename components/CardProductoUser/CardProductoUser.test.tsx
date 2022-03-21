@@ -21,7 +21,7 @@ describe("Given a CardProducto Component", () => {
           password: "",
           email: "",
         },
-        location: { lat: "", long: "" },
+
         adress: "diputacio 37, Barcelona",
       };
 

@@ -2,7 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import styled from "styled-components";
 import Form from "../../components/Form/Form";
 import Loading from "../../components/Loading/Loading";
-import { Producto } from "../../types/Producto";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 const DisplayForm = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const DisplayForm = styled.div`
 `;
 
 interface EditProductProps {
-  product: Producto;
+  product: ProductoLocation;
 }
 
 const EditProduct = ({ product }: EditProductProps): JSX.Element => {
@@ -33,8 +33,8 @@ export const getServerSideProps: GetServerSideProps = async (
   );
 
   const responseBody = await response.json();
-  const product: Producto[] = responseBody.products.find(
-    (responseProduct: Producto) => {
+  const product: ProductoLocation[] = responseBody.products.find(
+    (responseProduct: ProductoLocation) => {
       return responseProduct._id === context.params?.id;
     }
   );
