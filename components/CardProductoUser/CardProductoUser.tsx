@@ -137,7 +137,7 @@ const CardProductoUser = ({
             src={product.picture}
             alt={product.title}
             width={200}
-            height={200}
+            height={210}
             layout="responsive"
             objectFit="cover"
           ></CardImage>
