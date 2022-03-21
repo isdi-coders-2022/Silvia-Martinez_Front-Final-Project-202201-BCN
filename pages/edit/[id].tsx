@@ -2,7 +2,6 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import styled from "styled-components";
 import Form from "../../components/Form/Form";
 import Loading from "../../components/Loading/Loading";
-import { Producto } from "../../types/Producto";
 import { ProductoLocation } from "../../types/ProductoLocation";
 
 const DisplayForm = styled.div`
