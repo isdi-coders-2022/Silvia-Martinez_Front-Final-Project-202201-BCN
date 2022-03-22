@@ -9,11 +9,19 @@ describe("Given a ProdcutList Component", () => {
       const productos: Producto[] = [
         {
           _id: "234",
-          price: 10,
+          price: "10",
           title: "silla",
           description: "silla bonita",
           category: "mueble",
           picture: "unafoto.jpg",
+          userID: {
+            _id: "",
+            name: "",
+            username: "",
+            password: "",
+            email: "",
+            picture: "",
+          },
         },
       ];
 
