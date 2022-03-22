@@ -1,4 +1,9 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import {
+  GetServerSideProps,
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsContext,
+} from "next";
 import { useSelector } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
 import CardProducto from "../../components/CardProducto/CardProducto";
@@ -55,38 +60,13 @@ const CategoryPage = ({ category }: CategoryPageProps): JSX.Element => {
   );
 };
 
-export const getProductsCategory = async (context?: GetStaticPropsContext) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_WALLAPLOP}products/list`
-  );
-  const productsCategory = await response.json();
-  const productos = productsCategory.products;
-
-  return productos.map((product: Producto) => {
-    return {
-      params: {
-        category: product.category,
-      },
-    };
-  });
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const category = await getProductsCategory();
-  return {
-    paths: category,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
-  (store) => async (context) => {
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async (context) => {
     const category = context.params?.category;
     await loadProductsThunks(store.dispatch);
     return {
       props: { category },
     };
-  }
-);
+  });
 
 export default CategoryPage;

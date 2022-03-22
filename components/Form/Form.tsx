@@ -88,13 +88,13 @@ const Form = ({ product }: FormProps): JSX.Element => {
 
   const onFormSubmit = async (event: React.FormEvent) => {
     try {
-      event.preventDefault();
-      if (product) {
-        dispatch(updateProductThunk(formData));
-        await router.push("/perfil");
-      } else {
-        dispatch(createProductThunk(formData));
-        await router.push("/perfil");
+    event.preventDefault();
+    if (product) {
+      dispatch(updateProductThunk(formData));
+      await router.push("/perfil");
+    } else {
+      dispatch(createProductThunk(formData));
+      await router.push("/perfil");
       }
     } catch (error) {
       toast("no ha funcionado");
