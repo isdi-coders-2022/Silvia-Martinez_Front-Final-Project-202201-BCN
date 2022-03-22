@@ -63,7 +63,7 @@ const Categorias = () => {
       <CategoriasStyled>
         <List>
           <ListItem>
-            <Link href={"/category/Cocina"}>
+            <Link href={"/category/cocina"}>
               <a>
                 <FontAwesomeIcon icon={faUtensils} />
                 <p>Cocina</p>
