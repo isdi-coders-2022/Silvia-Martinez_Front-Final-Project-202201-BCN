@@ -1,9 +1,4 @@
-import {
-  GetServerSideProps,
-  GetStaticPaths,
-  GetStaticProps,
-  GetStaticPropsContext,
-} from "next";
+import { GetServerSideProps } from "next";
 import { useSelector } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
 import CardProducto from "../../components/CardProducto/CardProducto";
@@ -25,7 +20,6 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   align-items: flex-start;
   justify-content: center;
   position: relative;
-  top: 110px;
   flex-wrap: wrap;
   margin: 0px;
   padding: 0px;

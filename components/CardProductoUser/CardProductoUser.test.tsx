@@ -3,6 +3,14 @@ import "@testing-library/jest-dom";
 import CardProductoUser from "./CardProductoUser";
 import { ProductoLocation } from "../../types/ProductoLocation";
 
+const mockDispatch = jest.fn();
+jest.mock("react-redux", () => ({
+  useDispatch: () => mockDispatch,
+}));
+
+jest.mock("../../redux/thunks/thunks", () => ({
+  deleteProductThunk: jest.fn(),
+}));
 describe("Given a CardProducto Component", () => {
   describe("When it's invoked", () => {
     test("Then it should render", () => {
