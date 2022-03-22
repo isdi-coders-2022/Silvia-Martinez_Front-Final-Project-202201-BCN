@@ -97,4 +97,28 @@ describe("Given productReducers", () => {
       expect(newProduct).toEqual(product);
     });
   });
+  describe("When given empty state and action", () => {
+    test("Then should return an empty product", () => {
+      const initProduct = {
+        _id: "",
+        price: "",
+        title: "",
+        description: "",
+        category: "",
+        picture: "",
+        userID: {
+          username: "",
+          name: "",
+          picture: "",
+          _id: "",
+          password: "",
+          email: "",
+        },
+      };
+
+      const expectedProduct = productReducer();
+
+      expect(expectedProduct).toEqual(initProduct);
+    });
+  });
 });
