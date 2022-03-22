@@ -2,7 +2,6 @@ import Form from "./Form";
 import { screen } from "@testing-library/react";
 import renderWithProviders from "../../jest.setup";
 import userEvent from "@testing-library/user-event";
-import { Producto } from "../../types/Producto";
 import {
   createProductThunk,
   updateProductThunk,
