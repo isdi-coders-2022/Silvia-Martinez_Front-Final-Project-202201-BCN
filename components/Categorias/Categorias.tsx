@@ -13,8 +13,29 @@ import styled, { StyledComponent } from "styled-components";
 
 const CategoriasStyled: StyledComponent<"div", {}> = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
-  height: 70px;
+  height: 120px;
+
+  .slider {
+    width: 100%;
+    height: 110px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    @media (min-width: 600px) {
+      width: 80vw;
+      height: 180px;
+    }
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+  .slide {
+    display: flex;
+    justify-content: center;
+    width: 140px;
+  }
 `;
 
 const List: StyledComponent<"ul", {}> = styled.ul`
@@ -22,10 +43,6 @@ const List: StyledComponent<"ul", {}> = styled.ul`
   margin: 0px;
   padding: 0px;
   display: flex;
-  flex-wrap: wrap;
-  @media (max-width: 500px) {
-    display: none;
-  }
 `;
 
 const ListItem: StyledComponent<"li", {}> = styled.li`
@@ -61,64 +78,80 @@ const Categorias = () => {
   return (
     <>
       <CategoriasStyled>
-        <List>
-          <ListItem>
-            <Link href={"/category/cocina"}>
-              <a>
-                <FontAwesomeIcon icon={faUtensils} />
-                <p>Cocina</p>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href={"/category/deportes"}>
-              <a>
-                <FontAwesomeIcon icon={faBasketballBall} />
-                <p>Deportes</p>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href={"/category/electrodomesticos"}>
-              <a>
-                <FontAwesomeIcon icon={faTv} />
-                <p>Electrodomesticos</p>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href={"/category/hogar"}>
-              <a>
-                <FontAwesomeIcon icon={faCouch} />
-                <p>Hogar</p>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href={"/category/moda"}>
-              <a>
-                <FontAwesomeIcon icon={faShirt} />
-                <p>Moda</p>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href={"/category/motor"}>
-              <a>
-                <FontAwesomeIcon icon={faCar} />
-                <p>Motor</p>
-              </a>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href={"/category/videojuegos"}>
-              <a>
-                <FontAwesomeIcon icon={faGamepad} />
-                <p>Videojuegos</p>
-              </a>
-            </Link>
-          </ListItem>
-        </List>
+        <div className="slider">
+          <List>
+            <ListItem>
+              <div className="slide">
+                <Link href={"/category/cocina"}>
+                  <a>
+                    <FontAwesomeIcon icon={faUtensils} />
+                    <p>Cocina</p>
+                  </a>
+                </Link>
+              </div>
+            </ListItem>
+            <ListItem>
+              <div className="slide">
+                <Link href={"/category/deportes"}>
+                  <a>
+                    <FontAwesomeIcon icon={faBasketballBall} />
+                    <p>Deportes</p>
+                  </a>
+                </Link>
+              </div>
+            </ListItem>
+            <ListItem>
+              <div className="slide">
+                <Link href={"/category/electrodomesticos"}>
+                  <a>
+                    <FontAwesomeIcon icon={faTv} />
+                    <p>Electrodomesticos</p>
+                  </a>
+                </Link>
+              </div>
+            </ListItem>
+            <ListItem>
+              <div className="slide">
+                <Link href={"/category/hogar"}>
+                  <a>
+                    <FontAwesomeIcon icon={faCouch} />
+                    <p>Hogar</p>
+                  </a>
+                </Link>
+              </div>
+            </ListItem>
+            <ListItem>
+              <div className="slide">
+                <Link href={"/category/moda"}>
+                  <a>
+                    <FontAwesomeIcon icon={faShirt} />
+                    <p>Moda</p>
+                  </a>
+                </Link>
+              </div>
+            </ListItem>
+            <ListItem>
+              <div className="slide">
+                <Link href={"/category/motor"}>
+                  <a>
+                    <FontAwesomeIcon icon={faCar} />
+                    <p>Motor</p>
+                  </a>
+                </Link>
+              </div>
+            </ListItem>
+            <ListItem>
+              <div className="slide">
+                <Link href={"/category/videojuegos"}>
+                  <a>
+                    <FontAwesomeIcon icon={faGamepad} />
+                    <p>Videojuegos</p>
+                  </a>
+                </Link>
+              </div>
+            </ListItem>
+          </List>
+        </div>
       </CategoriasStyled>
     </>
   );
