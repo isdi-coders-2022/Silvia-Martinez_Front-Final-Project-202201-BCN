@@ -88,12 +88,10 @@ describe("Given userReducers", () => {
         username: "",
         email: "",
         password: "",
-        picture: "",
+        picture: "/wallaplop.jpg",
       };
 
-      const action = { type: "" };
-
-      const receivedUser = userReducers(currentUser, action);
+      const receivedUser = userReducers();
 
       expect(receivedUser).toEqual(currentUser);
     });
@@ -174,12 +172,11 @@ describe("Given userReducers", () => {
       };
       const action = {
         type: actionTypes.logoutUser,
-        user,
       };
 
       const newUser = userReducers(user, action);
 
-      expect(newUser).toStrictEqual(initUser);
+      expect(newUser).toEqual(initUser);
     });
   });
 });
