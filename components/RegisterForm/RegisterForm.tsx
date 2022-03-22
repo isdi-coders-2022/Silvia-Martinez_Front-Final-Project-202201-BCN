@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import styled, { StyledComponent } from "styled-components";
 import { registerUserThunks } from "../../redux/thunks/thunks";
 import Button from "../Button/Button";
@@ -66,8 +67,12 @@ const RegisterForm = () => {
 
   const onFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(registerUserThunks(formData));
-    await router.push("/login");
+    try {
+      dispatch(registerUserThunks(formData));
+      await router.push("/login");
+    } catch (error) {
+      toast("No hemos podido registrarte");
+    }
   };
 
   const changeData = (
