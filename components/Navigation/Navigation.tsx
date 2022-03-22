@@ -9,11 +9,13 @@ import { useEffect, useState } from "react";
 const NavList: StyledComponent<"div", {}> = styled.div`
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
+  z-index: 100;
   top: 0;
   border-bottom: 2px solid rgba(196, 196, 196, 0.16);
   height: 100px;
-  width: 100vw;
+  width: 100%;
+  background-color: white;
 `;
 const Logo: StyledComponent<"div", {}> = styled.div`
   display: flex;

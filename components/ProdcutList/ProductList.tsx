@@ -8,7 +8,6 @@ const ListProduct: StyledComponent<"ul", {}> = styled.ul`
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
-  top: 110px;
   flex-wrap: wrap;
   margin: 0px;
   padding: 0px;

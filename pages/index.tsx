@@ -19,7 +19,6 @@ const Title: StyledComponent<"h2", {}> = styled.h2`
   flex-direction: row;
   align-items: flex-start;
   position: relative;
-  top: 100px;
   margin: 20px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 `;
