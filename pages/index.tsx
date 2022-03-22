@@ -10,9 +10,10 @@ const DisplayHome: StyledComponent<"div", {}> = styled.div`
   position: relative;
   top: 99px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 10vh;
+  margin-left: 5%;
+  margin-right: 5%;
 `;
 const Title: StyledComponent<"h2", {}> = styled.h2`
   display: flex;
