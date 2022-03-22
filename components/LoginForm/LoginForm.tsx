@@ -54,7 +54,6 @@ const StyleButtons = styled.div`
 
 const LoginForm = () => {
   const router = useRouter();
-
   const initialFields: User = {
     _id: "",
     name: "",

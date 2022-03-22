@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled, { StyledComponent } from "styled-components";
@@ -61,10 +62,12 @@ const RegisterForm = () => {
 
   const [formData, setFormData] = useState(initialFields);
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const onFormSubmit = (event: React.FormEvent) => {
+  const onFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(registerUserThunks(formData));
+    await router.push("/login");
   };
 
   const changeData = (
