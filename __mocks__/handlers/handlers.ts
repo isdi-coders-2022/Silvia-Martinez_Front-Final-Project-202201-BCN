@@ -55,6 +55,14 @@ export const handlers = [
           title: "silla",
           description: "silla bonita",
           category: "mueble",
+          userID: {
+            _id: "",
+            name: "Pepe",
+            username: "Pepito",
+            email: "pepe@pepe.com",
+            password: "1234",
+            picture: "",
+          },
         })
       );
     }
@@ -75,10 +83,7 @@ export const handlers = [
             title: "silla",
             description: "silla bonita",
             category: "mueble",
-            location: {
-              lat: 22222,
-              long: 44444,
-            },
+            adress: "Diputacio 37, barcelona",
           },
         ])
       );
@@ -96,10 +101,7 @@ export const handlers = [
             title: "silla",
             description: "silla bonita",
             category: "mueble",
-            location: {
-              lat: 22222,
-              long: 44444,
-            },
+            adress: "Diputacio 37, barcelona",
           },
         ])
       );

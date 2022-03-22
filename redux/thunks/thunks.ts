@@ -89,8 +89,8 @@ export const createProductThunk =
         },
       }
     );
-    const newProduct = await response.json();
     if (response.ok) {
+      const newProduct = await response.json();
       dispatch(createProductActions(newProduct));
       toast("Has creado un nuevo producto 🥳");
     }
@@ -141,7 +141,6 @@ export const registerUserThunks =
     );
     const newUser = await response.json();
     if (response.ok) {
-      dispatch(loginUserThunks(user));
       dispatch(registerUserActions(newUser));
       toast("Te has registrado 🦋");
     }
@@ -160,9 +159,9 @@ export const loginUserThunks =
         }),
       }
     );
+    const tokenResponse = await response.json();
 
     if (response.ok) {
-      const tokenResponse = await response.json();
       const userResponse: User = await jwtDecode(tokenResponse.token);
       localStorage.setItem(
         "token",
@@ -189,6 +188,7 @@ export const LoadUserThunks = async (dispatch: AppDispatch) => {
     }
   );
   const user: User = await response.json();
-
-  dispatch(loadUserActions(user));
+  if (response.ok) {
+    dispatch(loadUserActions(user));
+  }
 };
