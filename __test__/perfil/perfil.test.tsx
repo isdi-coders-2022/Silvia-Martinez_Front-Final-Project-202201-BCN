@@ -1,6 +1,9 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import renderWithProviders from "../../jest.setup";
 import Perfil from "../../pages/perfil";
+import { wrapper } from "../../redux/store";
+import { deleteProductThunks } from "../../redux/thunks/thunks";
 
 describe("Given a perfil page", () => {
   describe("When its invoked", () => {
@@ -24,6 +27,21 @@ describe("Given a perfil page", () => {
       const text = screen.getByRole("list");
 
       expect(text).toBeInTheDocument();
+    });
+    test("Then it render a list of products", async () => {
+      const WrappedComponent = await wrapper.withRedux(Perfil);
+
+      renderWithProviders(<WrappedComponent />);
+      let title;
+      let button;
+
+      await waitFor(() => {
+        title = screen.getByRole("heading", { name: "play station" });
+        button = screen.getByRole("button", { name: "Añadir producto" });
+      });
+
+      expect(title).toBeInTheDocument();
+      expect(button).toBeInTheDocument();
     });
   });
 });
