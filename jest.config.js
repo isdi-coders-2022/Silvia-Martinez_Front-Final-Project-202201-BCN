@@ -17,6 +17,7 @@ const customJestConfig = {
     "!next.config.js",
     "!**/_app.tsx",
     "!_document.js",
+    "!cypress/integration/*",
   ],
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
