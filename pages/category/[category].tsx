@@ -12,6 +12,8 @@ const DisplayCategoryPage: StyledComponent<"div", {}> = styled.div`
   flex-direction: column;
   position: relative;
   top: 100px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ListProduct: StyledComponent<"ul", {}> = styled.ul`
