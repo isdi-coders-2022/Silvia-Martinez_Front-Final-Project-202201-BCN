@@ -14,9 +14,11 @@ const DisplayHome: StyledComponent<"div", {}> = styled.div`
   flex-wrap: wrap;
   margin-left: 5%;
   margin-right: 5%;
+  justify-content: center;
   .main-heading {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 `;
 
