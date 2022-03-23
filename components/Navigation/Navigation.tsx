@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from ".//../../public/wallaplop.jpg";
 import { useEffect, useState } from "react";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const NavList: StyledComponent<"div", {}> = styled.div`
   display: flex;
@@ -56,11 +58,7 @@ const ListItem: StyledComponent<"li", {}> = styled.li`
 `;
 
 export const Navigation = (): JSX.Element => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem("token"));
-  }, []);
+  const user = useSelector((state: RootState) => state.user);
 
   return (
     <NavList>
@@ -81,7 +79,7 @@ export const Navigation = (): JSX.Element => {
           </Link>
         </ListItem>
         <ListItem>
-          {isLoggedIn && (
+          {user._id && (
             <Link href={"/perfil"}>
               <a>
                 <FontAwesomeIcon icon={faUser} />
@@ -89,7 +87,7 @@ export const Navigation = (): JSX.Element => {
               </a>
             </Link>
           )}
-          {!isLoggedIn && (
+          {!user._id && (
             <Link href={"/login"}>
               <a>
                 <FontAwesomeIcon icon={faUser} />
