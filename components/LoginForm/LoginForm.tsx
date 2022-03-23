@@ -1,8 +1,10 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import styled, { StyledComponent } from "styled-components";
+import { resetErrorsAction } from "../../redux/actions/actionCreator";
+import { RootState } from "../../redux/store";
 import { loginUserThunks } from "../../redux/thunks/thunks";
 import { User } from "../../types/User";
 import Button from "../Button/Button";
@@ -54,6 +56,18 @@ const StyleButtons = styled.div`
 
 const LoginForm = () => {
   const router = useRouter();
+  const isUserOrPasswordIncorrect = useSelector(
+    (state: RootState) => state.appErrors.isUserOrPasswordIncorrect
+  );
+
+  const isGenericError = useSelector(
+    (state: RootState) => state.appErrors.isErrorGeneric
+  );
+
+  const isMissingFieldsError = useSelector(
+    (state: RootState) => state.appErrors.isMissingFieldsError
+  );
+
   const initialFields: User = {
     _id: "",
     name: "",
@@ -64,15 +78,58 @@ const LoginForm = () => {
   };
 
   const [formData, setFormData] = useState(initialFields);
+  const [loginSubmitted, setLoginSubmited] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        if (loginSubmitted) {
+          setLoginSubmited(false);
+          if (
+            !isUserOrPasswordIncorrect &&
+            !isGenericError &&
+            !isMissingFieldsError
+          ) {
+            await router.push("/perfil");
+          } else {
+            dispatch(resetErrorsAction());
+          }
+        }
+      } catch (error) {
+        return error;
+      }
+    })();
+  }, [
+    dispatch,
+    isUserOrPasswordIncorrect,
+    isGenericError,
+    isMissingFieldsError,
+    loginSubmitted,
+    router,
+  ]);
+
+  useEffect(() => {
+    if (isUserOrPasswordIncorrect) {
+      toast("Incorrect user or password 🚫");
+    }
+    if (isGenericError) {
+      toast("Something unexpected happened. ❌ Try again later");
+    }
+    if (isMissingFieldsError) {
+      toast("Missing username or password 🆘");
+    }
+  }, [isUserOrPasswordIncorrect, isGenericError, isMissingFieldsError]);
 
   const onFormSubmit = async (event: React.FormEvent) => {
     try {
+      setLoginSubmited(false);
       event.preventDefault();
-      dispatch(loginUserThunks(formData));
-      await router.push("/perfil");
+      await dispatch(loginUserThunks(formData));
+      setFormData(initialFields);
+      setLoginSubmited(true);
     } catch (error) {
-      toast("no ha funcionado");
+      toast("Something wrong happened");
     }
   };
 
