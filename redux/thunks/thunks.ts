@@ -2,6 +2,9 @@ import { Producto } from "../../types/Producto";
 import {
   createProductActions,
   deleteProductActions,
+  errorGenericAction,
+  errorMissingFieldsAction,
+  errorUserOrPasswordIncorrectAction,
   loadProductAction,
   loadProductsActions,
   loadProductsUserActions,
@@ -148,31 +151,45 @@ export const registerUserThunks =
 
 export const loginUserThunks =
   (user: User) => async (dispatch: AppDispatch) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_WALLAPLOP}user/login`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: user.username,
-          password: user.password,
-        }),
-      }
-    );
-    const tokenResponse = await response.json();
-
-    if (response.ok) {
-      const userResponse: User = await jwtDecode(tokenResponse.token);
-      localStorage.setItem(
-        "token",
-        JSON.stringify({
-          ...userResponse,
-          token: tokenResponse.token,
-        })
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_WALLAPLOP}user/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: user.username,
+            password: user.password,
+          }),
+        }
       );
-      localStorage.setItem("token", tokenResponse.token);
-      dispatch(loginUserActions(user));
-      toast("Ahora estas dentro!🐙");
+      if (response.ok) {
+        const tokenResponse = await response.json();
+        const userResponse: User = await jwtDecode(tokenResponse.token);
+        localStorage.setItem(
+          "token",
+          JSON.stringify({
+            ...userResponse,
+            token: tokenResponse.token,
+          })
+        );
+        localStorage.setItem("token", tokenResponse.token);
+        dispatch(loginUserActions(user));
+        toast("Ahora estas dentro!🐙");
+      } else {
+        switch (response.status) {
+          case 401:
+            dispatch(errorUserOrPasswordIncorrectAction());
+            break;
+          case 400:
+            dispatch(errorMissingFieldsAction());
+            break;
+          default:
+            dispatch(errorGenericAction());
+        }
+      }
+    } catch (error) {
+      dispatch(errorGenericAction());
     }
   };
 
