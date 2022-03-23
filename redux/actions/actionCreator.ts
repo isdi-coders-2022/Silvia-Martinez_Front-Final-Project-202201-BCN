@@ -50,3 +50,19 @@ export const loadUserActions = (user: User) => ({
 export const logoutUserActions = () => ({
   type: actionTypes.logoutUser,
 });
+
+export const errorUserOrPasswordIncorrectAction = () => ({
+  type: actionTypes.errorUserOrPasswordIncorrect,
+});
+
+export const errorGenericAction = () => ({
+  type: actionTypes.errorGeneric,
+});
+
+export const errorMissingFieldsAction = () => ({
+  type: actionTypes.errorMissingFields,
+});
+
+export const resetErrorsAction = () => ({
+  type: actionTypes.resetErrors,
+});

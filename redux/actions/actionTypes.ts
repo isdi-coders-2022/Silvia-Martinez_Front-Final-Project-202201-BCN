@@ -9,6 +9,10 @@ const actionTypes = {
   registerUser: "register-user",
   loadUser: "load-user",
   logoutUser: "logout-user",
+  errorUserOrPasswordIncorrect: "user-or-password-incorrect",
+  errorMissingFields: "missing-fields",
+  errorGeneric: "error-generic",
+  resetErrors: "reset-errors",
 };
 
 export default actionTypes;
