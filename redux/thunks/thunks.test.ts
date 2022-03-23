@@ -10,9 +10,8 @@ import {
   updateProductThunk,
 } from "./thunks";
 import "@testing-library/jest-dom";
-import { Producto } from "../../types/Producto";
 import { User } from "../../types/User";
-import jwtDecode from "jwt-decode";
+import { ProductoLocation } from "../../types/ProductoLocation";
 
 jest.mock("jwt-decode", () => () => ({
   name: "Pepe",
@@ -81,7 +80,7 @@ describe("Given a createProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const product: Producto = {
+      const product: ProductoLocation = {
         _id: "123",
         price: "10",
         title: "silla",
@@ -96,6 +95,7 @@ describe("Given a createProduct thunk function", () => {
           password: "",
           email: "",
         },
+        adress: "",
       };
 
       const createThunk = createProductThunk(product);
@@ -112,7 +112,7 @@ describe("Given a updateProduct thunk function", () => {
     test("Then it should call a dispatch", async () => {
       const dispatch = jest.fn();
 
-      const product: Producto = {
+      const product: ProductoLocation = {
         _id: "123",
         price: "12",
         title: "silla",
@@ -127,6 +127,7 @@ describe("Given a updateProduct thunk function", () => {
           password: "",
           email: "",
         },
+        adress: "",
       };
 
       const updateThunk = updateProductThunk(product);
