@@ -22,6 +22,7 @@ const CategoriasStyled: StyledComponent<"div", {}> = styled.div`
     height: 110px;
     overflow-x: auto;
     scrollbar-width: none;
+    overflow-y: hidden;
     @media (max-width: 900px) {
       width: 80vw;
       height: 180px;
