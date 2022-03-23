@@ -1,11 +1,10 @@
-import { HYDRATE } from "next-redux-wrapper";
 import { AnyAction } from "redux";
 import actionTypes from "../actions/actionTypes";
 
 interface AppError {
-  isErrorGeneric: Boolean;
-  isUserOrPasswordIncorrect: Boolean;
-  isMissingFieldsError: Boolean;
+  isErrorGeneric: boolean;
+  isUserOrPasswordIncorrect: boolean;
+  isMissingFieldsError: boolean;
 }
 
 const initialState: AppError = {
