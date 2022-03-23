@@ -1,12 +1,16 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import renderWithProviders from "../../jest.setup";
+import { wrapper } from "../../redux/store";
 import { loginUserThunks } from "../../redux/thunks/thunks";
 import { User } from "../../types/User";
 import LoginForm from "./LoginForm";
 
 const mockDispatch = jest.fn();
+
 jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useSelector: jest.fn(),
   useDispatch: () => mockDispatch,
 }));
 
@@ -16,8 +20,10 @@ jest.mock("../../redux/thunks/thunks", () => ({
 
 describe("Given a Form Login component", () => {
   describe("When it types in inputs and submit", () => {
-    test("Then it should called a dispatch", () => {
-      renderWithProviders(<LoginForm />);
+    test("Then it should called a dispatch", async () => {
+      const WrappedComponent = await wrapper.withRedux(LoginForm);
+
+      renderWithProviders(<WrappedComponent />);
 
       const username = "Pepito";
       const password = "1234";

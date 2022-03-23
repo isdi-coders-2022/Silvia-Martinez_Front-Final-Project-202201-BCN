@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import errorsReducer from "./errorsReducer";
 import productReducer from "./productReducer";
 import productsReducers from "./productsReducers";
 import productsUserReducer from "./productsUserReducer";
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   productsUser: productsUserReducer,
   product: productReducer,
   user: userReducers,
+  appErrors: errorsReducer,
 });
 
 export default rootReducer;
