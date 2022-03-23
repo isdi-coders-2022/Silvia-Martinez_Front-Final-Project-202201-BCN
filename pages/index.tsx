@@ -8,12 +8,23 @@ import { loadProductsThunks } from "../redux/thunks/thunks";
 
 const DisplayHome: StyledComponent<"div", {}> = styled.div`
   position: relative;
-  top: 99px;
   display: flex;
   flex-direction: row;
+  top: 100px;
   flex-wrap: wrap;
   margin-left: 5%;
   margin-right: 5%;
+  .main-heading {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const DisplayCategories: StyledComponent<"div", {}> = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 const Title: StyledComponent<"h2", {}> = styled.h2`
   display: flex;
@@ -29,8 +40,12 @@ const Home: NextPage = (): JSX.Element => {
   return (
     <>
       <DisplayHome>
-        <Categorias />
-        <Title>Cerca de ti</Title>
+        <div className="main-heading">
+          <DisplayCategories>
+            <Categorias />
+          </DisplayCategories>
+          <Title>Cerca de ti</Title>
+        </div>
         <ProductList products={products} />
       </DisplayHome>
     </>
