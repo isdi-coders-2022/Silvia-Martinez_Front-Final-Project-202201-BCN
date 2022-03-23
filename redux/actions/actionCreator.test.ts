@@ -3,12 +3,16 @@ import { User } from "../../types/User";
 import {
   createProductActions,
   deleteProductActions,
+  errorGenericAction,
+  errorMissingFieldsAction,
+  errorUserOrPasswordIncorrectAction,
   loadProductsActions,
   loadProductsUserActions,
   loadUserActions,
   loginUserActions,
   logoutUserActions,
   registerUserActions,
+  resetErrorsAction,
   updateProductActions,
 } from "./actionCreator";
 
@@ -213,10 +217,54 @@ describe("Given a loadUserAction", () => {
 });
 
 describe("Given a logoutUserAction", () => {
-  describe("When it receives a user", () => {
-    test("Then it should return an action register", () => {
+  describe("When it is called", () => {
+    test("Then it should return an action delete", () => {
       const expectedAction = { type: "logout-user" };
       const action = logoutUserActions();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a errorUserOrPasswordIncorrectAction", () => {
+  describe("When it invoked", () => {
+    test("Then it should return an action error", () => {
+      const expectedAction = { type: "user-or-password-incorrect" };
+      const action = errorUserOrPasswordIncorrectAction();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a errorGenericAction", () => {
+  describe("When it invoked", () => {
+    test("Then it should return an action error", () => {
+      const expectedAction = { type: "error-generic" };
+      const action = errorGenericAction();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a missing-fields action", () => {
+  describe("When it invoked", () => {
+    test("Then it should return an action error", () => {
+      const expectedAction = { type: "missing-fields" };
+      const action = errorMissingFieldsAction();
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a resetErrors action", () => {
+  describe("When it invoked", () => {
+    test("Then it should return an action error", () => {
+      const expectedAction = { type: "reset-errors" };
+      const action = resetErrorsAction();
 
       expect(action).toEqual(expectedAction);
     });
