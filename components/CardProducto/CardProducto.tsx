@@ -6,8 +6,8 @@ import { Producto } from "../../types/Producto";
 const Card: StyledComponent<"li", {}> = styled.li`
   display: flex;
   flex-direction: column;
-  width: 217px;
-  height: 363px;
+  width: 215px;
+  height: 365px;
   border: 1px solid rgba(0, 0, 0, 0.31);
   border-radius: 13px;
   background-color: rgba(229, 229, 229, 1);
@@ -19,8 +19,8 @@ const Card: StyledComponent<"li", {}> = styled.li`
     cursor: pointer;
   }
   @media (max-width: 500px) {
-    height: 253px;
-    width: 176px;
+    height: 240px;
+    width: 140px;
   }
 `;
 const CardImage = styled(Image)`
@@ -34,7 +34,7 @@ const CardImage = styled(Image)`
   z-index: 99;
 
   @media (max-width: 500px) {
-    width: 174px;
+    width: 172px;
     height: 170px;
   }
 `;
@@ -59,7 +59,7 @@ const CardDescription: StyledComponent<"article", {}> = styled.article`
   }
 
   @media (max-width: 500px) {
-    height: 83px;
+    height: 85px;
     h2 {
       font-size: 16px;
     }
