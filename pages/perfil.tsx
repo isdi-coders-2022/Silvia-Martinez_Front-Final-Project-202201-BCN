@@ -24,6 +24,13 @@ const DisplayTitle: StyledComponent<"section", {}> = styled.section`
   align-items: center;
   margin-right: 20px;
   justify-content: space-between;
+
+  .button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 65px;
+  }
 `;
 
 const Title: StyledComponent<"h2", {}> = styled.h2`
@@ -100,10 +107,12 @@ const Perfil = (): JSX.Element => {
     <>
       <DisplayTitle>
         <Title>Tus productos</Title>
-        <Button
-          text={"Añadir producto"}
-          onClick={() => router.push("/add-product")}
-        />
+        <div className="button">
+          <Button
+            text={"Añadir producto"}
+            onClick={() => router.push("/add-product")}
+          />
+        </div>
       </DisplayTitle>
       <DisplayPerfil>
         {user && user._id && (
