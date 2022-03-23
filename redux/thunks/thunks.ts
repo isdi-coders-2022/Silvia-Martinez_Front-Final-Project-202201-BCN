@@ -65,7 +65,13 @@ export const deleteProductThunks =
   (id: string) => async (dispatch: AppDispatch) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_WALLAPLOP}products/${id}`,
-      { method: "DELETE" }
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
     if (response.ok) {
       dispatch(deleteProductActions(id));
