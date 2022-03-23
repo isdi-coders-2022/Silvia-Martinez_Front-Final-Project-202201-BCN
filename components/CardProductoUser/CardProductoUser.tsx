@@ -30,7 +30,7 @@ const Card: StyledComponent<"li", {}> = styled.li`
 
 const ImageDiv = styled.div`
   height: 185px;
-  width: 225px;
+  width: 240px;
   display: flex;
   flex-direction: column;
   @media (max-width: 500px) {
