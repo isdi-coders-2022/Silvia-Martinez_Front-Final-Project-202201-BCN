@@ -12,7 +12,7 @@ const initUser: User = {
   picture: "/wallaplop.jpg",
 };
 
-const userReducers = (
+const userReducer = (
   currentUser: User = initUser,
   action: AnyAction = { type: "" }
 ) => {
@@ -41,4 +41,4 @@ const userReducers = (
   return newUser;
 };
 
-export default userReducers;
+export default userReducer;

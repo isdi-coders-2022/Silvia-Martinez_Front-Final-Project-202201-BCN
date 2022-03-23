@@ -4,7 +4,7 @@ import actionTypes from "../actions/actionTypes";
 
 const productsUserReducer = (
   currentProducts: Producto[] = [],
-  action: AnyAction
+  action: AnyAction = { type: "" }
 ) => {
   let newProducts: Producto[];
   switch (action.type) {

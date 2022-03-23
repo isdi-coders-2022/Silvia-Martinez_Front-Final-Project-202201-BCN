@@ -4,7 +4,6 @@ import styled, { StyledComponent } from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import logo from ".//../../public/wallaplop.jpg";
-import { useEffect, useState } from "react";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 
