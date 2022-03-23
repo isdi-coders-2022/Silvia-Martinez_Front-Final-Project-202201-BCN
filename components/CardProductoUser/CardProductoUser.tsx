@@ -34,7 +34,7 @@ const ImageDiv = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: 500px) {
-    height: 180px;
+    height: 120px;
     width: 200px;
   }
 `;
@@ -66,7 +66,7 @@ const MapContainer: StyledComponent<"div", {}> = styled.div`
     bottom: 0;
     border-radius: 0px 0px 13px 13px;
     width: 200px;
-    height: 100px;
+    height: 175px;
   }
 `;
 
@@ -92,7 +92,7 @@ const CardDescription: StyledComponent<"article", {}> = styled.article`
   }
 
   @media (max-width: 500px) {
-    height: 135px;
+    height: 105px;
     width: 210px;
     h2 {
       font-size: 16px;
@@ -137,7 +137,7 @@ const CardProductoUser = ({
             src={product.picture}
             alt={product.title}
             width={200}
-            height={210}
+            height={200}
             layout="responsive"
             objectFit="cover"
           ></CardImage>
@@ -147,7 +147,6 @@ const CardProductoUser = ({
           <h3>{product.title}</h3>
           <p>{product.description}</p>
           <p> {product.category}</p>
-          <p>numero likes</p>
         </CardDescription>
         <CardButton>
           <Button text={"Editar"} onClick={onClickUpdate} />
