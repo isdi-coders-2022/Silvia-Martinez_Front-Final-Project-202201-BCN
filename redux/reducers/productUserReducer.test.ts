@@ -231,4 +231,13 @@ describe("Given a product User Reducer", () => {
       expect(updatedProducts.length).toBe(2);
     });
   });
+  describe("When given empty state and action", () => {
+    test("Then should return an empty product", () => {
+      const initProducts: Producto[] = [];
+
+      const expectedProduct = productsUserReducer();
+
+      expect(expectedProduct).toEqual(initProducts);
+    });
+  });
 });

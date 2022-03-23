@@ -1,7 +1,7 @@
 import { HYDRATE } from "next-redux-wrapper";
 import { User } from "../../types/User";
 import actionTypes from "../actions/actionTypes";
-import userReducers from "./userReducer";
+import userReducer from "./userReducer";
 
 describe("Given userReducers", () => {
   describe("When given a current obejct and  register action", () => {
@@ -27,7 +27,7 @@ describe("Given userReducers", () => {
         user,
       };
 
-      const newUser = userReducers(currentUser, action);
+      const newUser = userReducer(currentUser, action);
 
       expect(newUser).toStrictEqual(user);
     });
@@ -56,7 +56,7 @@ describe("Given userReducers", () => {
         payload: { user: user },
       };
 
-      const newUser = userReducers(initUser, action);
+      const newUser = userReducer(initUser, action);
 
       expect(newUser).toEqual(user);
     });
@@ -75,7 +75,7 @@ describe("Given userReducers", () => {
 
       const action = { type: "not-work" };
 
-      const receivedUser = userReducers(currentUser, action);
+      const receivedUser = userReducer(currentUser, action);
 
       expect(receivedUser).toEqual(currentUser);
     });
@@ -91,7 +91,7 @@ describe("Given userReducers", () => {
         picture: "/wallaplop.jpg",
       };
 
-      const receivedUser = userReducers();
+      const receivedUser = userReducer();
 
       expect(receivedUser).toEqual(currentUser);
     });
@@ -119,7 +119,7 @@ describe("Given userReducers", () => {
         user,
       };
 
-      const newUser = userReducers(currentUser, action);
+      const newUser = userReducer(currentUser, action);
 
       expect(newUser).toEqual(user);
     });
@@ -147,7 +147,7 @@ describe("Given userReducers", () => {
         user,
       };
 
-      const newUser = userReducers(currentUser, action);
+      const newUser = userReducer(currentUser, action);
 
       expect(newUser).toStrictEqual(user);
     });
@@ -174,7 +174,7 @@ describe("Given userReducers", () => {
         type: actionTypes.logoutUser,
       };
 
-      const newUser = userReducers(user, action);
+      const newUser = userReducer(user, action);
 
       expect(newUser).toEqual(initUser);
     });

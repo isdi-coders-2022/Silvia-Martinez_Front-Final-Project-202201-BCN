@@ -3,13 +3,13 @@ import errorsReducer from "./errorsReducer";
 import productReducer from "./productReducer";
 import productsReducers from "./productsReducers";
 import productsUserReducer from "./productsUserReducer";
-import userReducers from "./userReducer";
+import userReducer from "./userReducer";
 
 const rootReducer = combineReducers({
   products: productsReducers,
   productsUser: productsUserReducer,
   product: productReducer,
-  user: userReducers,
+  user: userReducer,
   appErrors: errorsReducer,
 });
 
