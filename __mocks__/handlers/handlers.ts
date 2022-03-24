@@ -25,22 +25,24 @@ export const handlers = [
     (req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json([
-          {
-            _id: "123",
-            price: 10,
-            title: "silla",
-            description: "silla bonita",
-            category: "mueble",
-          },
-          {
-            _id: "124",
-            price: 10,
-            title: "silla",
-            description: "silla bonita",
-            category: "mueble",
-          },
-        ])
+        ctx.json({
+          products: [
+            {
+              _id: "123",
+              price: 10,
+              title: "silla",
+              description: "silla bonita",
+              category: "mueble",
+            },
+            {
+              _id: "124",
+              price: 125,
+              title: "play station",
+              description: "play station 5",
+              category: "videojuegos",
+            },
+          ],
+        })
       );
     }
   ),
@@ -136,6 +138,7 @@ export const handlers = [
       })
     )
   ),
+
   rest.get(`${process.env.NEXT_PUBLIC_WALLAPLOP}user/user`, (req, res, ctx) =>
     res(
       ctx.status(201),
